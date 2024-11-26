@@ -1,0 +1,161 @@
+/* General Carousel Container */
+.carousel-container {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  /* padding-bottom: 20px; */
+  background-color: #fff;
+}
+
+/* Title Section */
+.carousel-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.carousel-underline {
+  width: 100px;
+  margin: 10px auto;
+  border: 2px solid red;
+}
+
+/* Carousel Section */
+.carousel {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+  justify-content: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.carousel-items {
+  display: flex;
+  gap: 20px;
+  overflow-x: hidden; /* Hide scrollbars */
+  scroll-behavior: smooth;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 200px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.carousel-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-image {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.carousel-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #333;
+}
+
+.carousel-subtext {
+  font-size: 1rem;
+  color: #777;
+}
+
+/* Carousel Buttons */
+.carousel-button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  transition: color 0.3s;
+}
+
+.carousel-button:hover {
+  color: #ff5722;
+}
+
+.carousel-button-left {
+  left: 10px;
+}
+
+.carousel-button-right {
+  right: 10px;
+}
+
+.carousel-button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Dots Navigation */
+.carousel-dots {
+  margin-top: 10px;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: #333;
+}
+
+/* View Courses Button */
+.view-courses-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #ff5722;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.view-courses-button:hover {
+  background-color: #e64a19;
+}
+
+/* Scrollbar Styles (optional) */
+.carousel-items::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.carousel-items::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.carousel-items::-webkit-scrollbar-thumb:hover {
+  background: #bbb;
+}
+
+.carousel-items::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
