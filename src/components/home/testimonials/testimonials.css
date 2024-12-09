@@ -1,0 +1,97 @@
+/* Overall container */
+.student-benefits {
+  display: flex;
+  gap: 40px;
+  padding: 50px 20px;
+  background: #f7f7f7;
+}
+
+/* Left Column */
+.left-column {
+  flex: 1;
+}
+
+.left-column h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.underline {
+  width: 70px;
+  height: 4px;
+  background-color: #1abc9c;
+  margin-bottom: 20px;
+}
+
+.left-column p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* Right Column */
+.right-column {
+  flex: 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  grid-template-rows: auto; /* Dynamically adjust rows */
+  gap: 30px;
+}
+
+/* Benefit Card */
+.benefit-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.benefit-card .icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #3498db; /* Customize icon color */
+}
+
+.benefit-card h3 {
+  font-size: 1.3rem;
+  color: #34495e;
+  margin-bottom: 10px;
+}
+
+.benefit-card p {
+  font-size: 1rem;
+  color: #777;
+  line-height: 1.6;
+}
+/* Benefit Card Media */
+.benefit-card .media {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100%;
+  height: 50px; /* Set a fixed height for media */
+  background-color: #f0f0f0; /* Fallback background */
+}
+
+.benefit-card .media img,
+.benefit-card .media video {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover; /* Ensures images/videos fit nicely */
+}
+
+.benefit-card .media video {
+  border-radius: 10px; /* Rounded corners for videos */
+}

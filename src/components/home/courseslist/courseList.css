@@ -1,0 +1,173 @@
+/* General Carousel Container */
+.carousel-container {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  height: 60%;
+  background-color: #fff;
+}
+
+.carousel-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.carousel-underline {
+  width: 100px;
+  margin: 10px auto;
+  border: 2px solid red;
+}
+
+/* Carousel Section */
+.carousel {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.carousel-items {
+  display: flex;
+  gap: 20px;
+  scroll-behavior: smooth;
+}
+
+/* Flip Card Styles */
+.card {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  /* background-color: #fff; */
+  background-color:  gray;
+  perspective: 1000px;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card:hover .content {
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.front {
+  background-color: #fff;
+}
+
+.back {
+  background-color: #03446A;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+/* Flip Card Content */
+.carousel-image {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.carousel-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.carousel-subtext {
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+}
+.carousel-button {
+  background-color: transparent;
+  border: 2px solid white;
+  /* border-radius: 30%; */
+  /* padding: 10px 15px; */
+  font-size: 14px;
+  border-radius: 18px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-button:hover {
+  color: #ff5722; /* Orange */
+  border-color: #ff5722;
+  background-color: #f9f9f9;
+}
+
+/* From Uiverse.io by gharsh11032000 */ 
+.animated-button {
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color:  #f9f9f9;
+  box-shadow: 0 0 0 2px#f9f9f9;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.animated-button span:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  /* background-color: #2196F3; */
+  background-color: #ff5722;
+  
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.animated-button span:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+.animated-button:hover {
+  /* box-shadow: 0 0 0 5px #2195f360;
+  color: #ffffff; */
+  color:#f9f9f9;; /* Orange */
+  border-color: #ff5722;
+  background-color: #f9f9f9;
+}
+
+.animated-button:active {
+  scale: 0.95;
+}
+
+.animated-button:hover span:last-child {
+  width: 150px;
+  height: 150px;
+  opacity: 1;
+}
+
+

@@ -1,0 +1,41 @@
+.banner {
+  background-image: url('/Users/admin/Desktop/Project/education .jpg'); /* Add the image path */
+  background-size: cover;
+  background-position: center;
+  height: 90vh; /* Adjust height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black; /* White font for contrast */
+}
+
+.banner-content {
+  text-align: center;
+}
+
+.banner-subtitle {
+  color: #ff7f00; /* Orange for subtitle */
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.banner-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.banner-button {
+  background-color: #ff7f00;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px; /* Rounded button */
+  transition: background-color 0.3s ease;
+}
+
+.banner-button:hover {
+  background-color: #e06600; /* Darker orange on hover */
+}

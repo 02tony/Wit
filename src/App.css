@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+/* App.css */
+
+/* Default styles (Light Mode) */
+body.light {
+  background-color: white;
+  color: black;
+}
+
+/* Dark Mode styles */
+body.dark {
+  background-color: #121212;
+  color: white;
+}
+
+/* Optional styling for buttons, headers, etc. */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  opacity: 0.9;
+}
