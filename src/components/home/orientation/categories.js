@@ -17,7 +17,7 @@ const JobOrientedCourses = () => {
             alt="Development Job Guarantee"
             style={styles.sliderImage}
           />
-          <p style={styles.overlayText}> Find right career</p>
+          <p style={styles.overlayText}>Find right career</p>
         </div>
         <div style={styles.imageContainerForTop}>
           <img
@@ -31,7 +31,13 @@ const JobOrientedCourses = () => {
 
       {/* Feature Cards Section */}
       <div style={styles.cardsContainer}>
-        {["svgs/Remote.svg", "svgs/OnlineClass.svg", "svgs/CorporatesTraining.svg", "svgs/training.svg" ,"/svgs/Certification-cuate.svg"].map((src, index) => (
+        {[
+          { src: "svgs/Remote.svg", text: "Classroom Batch Training" },
+          { src: "svgs/OnlineClass.svg", text: "Online Training" },
+          { src: "svgs/CorporatesTraining.svg", text: "Job-Oriented Training" },
+          { src: "svgs/training.svg", text: "Corporate Training" },
+          { src: "/svgs/Certification-cuate.svg", text: "Certification Courses" },
+        ].map((card, index) => (
           <div
             key={index}
             style={{
@@ -42,29 +48,12 @@ const JobOrientedCourses = () => {
             onMouseLeave={() => setHoveredCard(null)}
           >
             <div style={styles.imageContainer}>
-              <img src={src} alt="Card Image" style={styles.cardImage} />
-              <p style={styles.overlayText}>
-                {index === 0
-                  ? "Classroom Batch Training"
-                  : index === 1
-                  ? "Online Training"
-                  : index === 2
-                  ? "Job-Oriented Training"
-                  : index === 3 
-                  ? "Corporate Training" 
-                  :""
-                  }
-              </p>
+              <img src={card.src} alt={card.text} style={styles.cardImage} />
+              <p style={styles.overlayText}>{card.text}</p>
             </div>
           </div>
         ))}
       </div>
-
-      {/* Action Buttons */}
-      {/* <div style={styles.buttonContainer}>
-        <button style={styles.enrollButton}>Enroll Now</button>
-        <button style={styles.demoButton}>Free Demo Classes</button>
-      </div> */}
     </div>
   );
 };
@@ -93,7 +82,7 @@ const styles = {
     justifyContent: "center",
     gap: "20px",
     margin: "20px 0",
-    marginBottom:'50px'
+    marginBottom: "50px",
   },
   imageContainerForTop: {
     position: "relative",
@@ -131,7 +120,7 @@ const styles = {
     flexWrap: "wrap",
     margin: "20px 0",
     gap: "20px",
-    marginBottom:'50px'
+    marginBottom: "50px",
   },
   card: {
     width: "200px",
