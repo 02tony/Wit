@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import "./courseList.css";
 import { PythonCourse, JavaCourse, WebDevelopmentCourse, FullStackCourse,TestingCourse  } from "../../Pages/Courses";
 
 const Carousel = () => {
-  const navigate = useNavigate();
   const [selectedCourse, setSelectedCourse] = useState(null);
 
   const courses = [

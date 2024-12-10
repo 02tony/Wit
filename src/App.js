@@ -7,19 +7,11 @@ import CourseList from "./components/Pages/CourseList";
 import GoogleFormEmbed from "./components/Pages/GoogleForm/googleform";
 import { Blogs } from "./components/home/Blog";
 import './App.css'; // Import the CSS file
-import Header from "./components/Header";
-// Import the Header component
 
 function App() {
   const [theme, setTheme] = useState('light'); // Default theme
   const [scrollProgress, setScrollProgress] = useState(0); // Progress bar state
 
-  // Toggle between light and dark themes
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme); // Save theme in localStorage
-  };
 
   // Load the saved theme from localStorage
   useEffect(() => {

@@ -27,13 +27,14 @@ const PopularCategories = () => {
         {categories.map((category, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Card sx={{ position: 'relative', borderRadius: '15px', overflow: 'hidden' }}>
-              <CardMedia
-                component="img"
-                height="250"
-                image={category.img}
-                alt={category.title}
-                sx={{ filter: 'brightness(0.7)' }}
-              />
+            <CardMedia
+              component="img"
+              height="250"
+              image={category.img}
+              alt={`${category.title} category`} // Provide a meaningful description
+              sx={{ filter: 'brightness(0.7)' }}
+            />
+
               <CardContent
                 sx={{
                   position: 'absolute',

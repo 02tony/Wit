@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "../Header";
 import Footer from "../home/footer";
 import "./Courses.css";
 
 const CourseList = () => {
-  const [selectedCourse, setSelectedCourse] = useState(null);
-
   const courses = [
     {
       title: "Python Programming",
