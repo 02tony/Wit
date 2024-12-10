@@ -44,7 +44,8 @@ const PopularCategories = () => {
                 }}
               >
                 <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center' }}>
-                  <SchoolIcon sx={{ marginRight: '8px', color: '#ff6b6b' }} /> {category.title}
+                  <SchoolIcon sx={{ marginRight: '8px', color: '#ff6b6b' }} /> 
+                  alt={`${category.title} category`}
                 </Typography>
                 <Typography variant="body2">{category.courses}</Typography>
               </CardContent>
