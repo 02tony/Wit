@@ -1,50 +1,80 @@
 /* Overall container */
 .student-benefits {
   display: flex;
+  flex-direction: column; /* Stack columns on mobile */
   gap: 40px;
-  padding: 50px 20px;
+  padding: 20px 10px; /* Reduced padding for smaller screens */
   background: #f7f7f7;
 }
 
 /* Left Column */
 .left-column {
   flex: 1;
+  text-align: center; /* Center-align text on smaller screens */
 }
 
 .left-column h2 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #2c3e50;
   margin-bottom: 10px;
 }
 
 .underline {
-  width: 70px;
+  width: 50px; /* Adjusted width for smaller screens */
   height: 4px;
   background-color: #1abc9c;
-  margin-bottom: 20px;
+  margin: 0 auto 20px auto; /* Center-align underline */
 }
 
 .left-column p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #555;
-  line-height: 1.8;
+  line-height: 1.6;
   margin-bottom: 20px;
+  padding: 0 10px; /* Add padding for readability */
 }
 
 /* Right Column */
 .right-column {
   flex: 2;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two columns */
-  grid-template-rows: auto; /* Dynamically adjust rows */
-  gap: 30px;
+  grid-template-columns: 1fr; /* Single column for mobile */
+  grid-template-rows: auto;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .student-benefits {
+    flex-direction: row; /* Side-by-side layout for larger screens */
+    gap: 40px;
+    padding: 50px 20px; /* Increased padding for laptops */
+  }
+
+  .right-column {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on laptops */
+    gap: 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .student-benefits {
+    padding: 70px 40px; /* Larger padding for desktops */
+  }
+
+  .left-column h2 {
+    font-size: 2rem; /* Larger heading for desktops */
+  }
+
+  .right-column {
+    gap: 40px;
+  }
 }
 
 /* Benefit Card */
 .benefit-card {
   background: #ffffff;
   border-radius: 10px;
-  padding: 20px;
+  padding: 15px; /* Reduced padding for smaller screens */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -56,42 +86,43 @@
 }
 
 .benefit-card .icon {
-  font-size: 2.5rem;
+  font-size: 2rem; /* Adjusted size for smaller screens */
   margin-bottom: 15px;
-  color: #3498db; /* Customize icon color */
+  color: #3498db;
 }
 
 .benefit-card h3 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: #34495e;
   margin-bottom: 10px;
 }
 
 .benefit-card p {
-  font-size: 1rem;
+  font-size: 0.9rem; /* Slightly smaller text for mobile */
   color: #777;
   line-height: 1.6;
 }
+
 /* Benefit Card Media */
 .benefit-card .media {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   border-radius: 10px;
   width: 100%;
-  height: 50px; /* Set a fixed height for media */
-  background-color: #f0f0f0; /* Fallback background */
+  height: 40px; /* Adjusted height for smaller screens */
+  background-color: #f0f0f0;
 }
 
 .benefit-card .media img,
 .benefit-card .media video {
   max-width: 100%;
   max-height: 100%;
-  object-fit: cover; /* Ensures images/videos fit nicely */
+  object-fit: cover;
 }
 
 .benefit-card .media video {
-  border-radius: 10px; /* Rounded corners for videos */
+  border-radius: 10px;
 }

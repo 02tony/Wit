@@ -1,51 +1,77 @@
 .slider {
-    background-size: cover;
-    background-position: center;
-    height: calc(70vh); /* Fullscreen minus header height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-     /* Ensure no overflow */
-    position: relative;
-    /* margin-bottom: 60px; */
-    /* margin-top: 10vh; */
-     /* Ensure space between header and slider */
+  background-size: cover;
+  background-position: center;
+  height: calc(70vh); /* Default height for larger screens */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-wrapper {
+  display: flex;
+  transition: transform 0.6s ease-in-out; /* Smooth sliding animation */
+  width: 100%; /* Adjust width to fit the container */
+}
+
+.slider-wrapper img {
+  width: 100vw; /* Full viewport width */
+  height: 150%; /* Default height for larger screens */
+  object-fit: cover; /* Ensure the image covers its container */
+  flex-shrink: 0; /* Prevent shrinking of images */
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 20px; /* Adjusted for better placement on smaller screens */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 2; /* Ensure dots are above slider content */
+}
+
+.slider-dot {
+  width: 10px; /* Smaller dots for better mobile view */
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slider-dot.active {
+  background-color: #ff7f00; /* Highlight active dot */
+}
+
+/* Responsive styles for laptops */
+@media (max-width: 1024px) {
+  .slider {
+    height: calc(60vh); /* Slightly smaller height */
   }
-  
-  .slider-wrapper {
-    display: flex;
-    transition: transform 0.6s ease-in-out; /* Smooth sliding animation */
-    width: 100%; /* Adjust width to fit the container */
-  }
-  
+
   .slider-wrapper img {
-    width: 100vw; /* Full viewport width */
-    height: 150%; /* Full height minus header and spacing */
-    object-fit: cover; /* Ensure the image covers its container */
-    flex-shrink: 0; /* Prevent shrinking of images */
+    height: 130%; /* Adjusted height */
   }
-  
+}
+
+/* Responsive styles for tablets and mobiles */
+@media (max-width: 768px) {
+  .slider {
+    height: calc(50vh); /* Smaller height for smaller screens */
+  }
+
+  .slider-wrapper img {
+    height: 120%; /* Adjusted height */
+  }
+
   .slider-dots {
-    position: absolute;
-    bottom: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 2; /* Ensure dots are above slider content */
+    bottom: 10px; /* Move dots closer to the bottom */
   }
-  
+
   .slider-dot {
-    width: 12px;
-    height: 12px;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: 8px; /* Even smaller dots for mobile view */
+    height: 8px;
   }
-  
-  .slider-dot.active {
-    background-color: #ff7f00; /* Highlight active dot */
-  }
-  
+}

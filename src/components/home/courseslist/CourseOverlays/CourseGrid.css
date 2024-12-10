@@ -1,3 +1,4 @@
+/* General Course Grid Styles */
 .course-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -77,4 +78,62 @@
 
 .register-button:hover {
   background-color: #0056b3;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .course-grid {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .course-card {
+    margin-bottom: 20px;
+  }
+
+  .course-details h3 {
+    font-size: 1.4rem;
+  }
+
+  .course-description {
+    font-size: 0.95rem;
+  }
+
+  .course-highlights li {
+    font-size: 0.85rem;
+  }
+
+  .register-button {
+    padding: 8px 16px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .course-grid {
+    grid-template-columns: 1fr;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .course-image {
+    height: 150px;
+  }
+
+  .course-details h3 {
+    font-size: 1.3rem;
+  }
+
+  .course-description {
+    font-size: 0.9rem;
+  }
+
+  .course-highlights li {
+    font-size: 0.8rem;
+  }
+
+  .register-button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
 }

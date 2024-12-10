@@ -54,12 +54,17 @@ const Footer = () => {
               </svg>
               
             </div>
-            <p style={{width:'50%',marginRight:'50%'}}>
-           Our online learning platform, founded by IT industry professionals, offers cutting-edge courses aligned with market standards. Gain expertise through digital classrooms, live projects, and certifications. Enjoy flexible timings, 24/7 support, and comprehensive curricula. Learn from experts and secure placements with our industry-focused training and unmatched commitment to student success.
-          </p>
+        
           </div>
         </div>
+        <p style={{}}>
+            WIT is an online learning platform founded by IT industry professionals.
+            We offer cutting-edge courses aligned with market standards.
+            WIT provides digital classrooms, live projects, certifications, flexible timings, 24/7 support, and comprehensive curricula.
+            We are committed to student success and secure placements.
+          </p>
       </div>
+         
       <div className="footer-section">
           <h3>ADDRESS</h3>
           <p>374 William S Canning Blvd, River</p>

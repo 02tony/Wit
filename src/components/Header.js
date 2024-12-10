@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
 import GoogleFormEmbed from "./Pages/GoogleForm/googleform";
-
 const useStyles = makeStyles({
   header: {
     display: "flex",
@@ -32,7 +31,7 @@ const useStyles = makeStyles({
   nav: {
     display: "flex",
     gap: "25px",
-    marginLeft:'25%',
+    marginLeft: "25%",
     "& a": {
       color: "#333",
       textDecoration: "none",
@@ -46,23 +45,68 @@ const useStyles = makeStyles({
       "&.active": {
         color: "#ff7f00",
         fontWeight: "bold",
-        borderBottom: "2px solid #ff7f00", // Highlight active link
+        borderBottom: "2px solid #ff7f00",
       },
+    },
+    "@media (max-width: 768px)": {
+      display: "none", // Hide navigation links on mobile
+    },
+  },
+  mobileNav: {
+    display: "none",
+    flexDirection: "column",
+    // position: "relatove",
+    top: "100%",
+    left: 0,
+    width: "100%",
+    backgroundColor: "#fff",
+    boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+    padding: "10px 5%",
+    zIndex: 999,
+    "& a": {
+      // marginBottom: "0px",
+      color: "#333",
+      textDecoration: "none",
+      fontSize: "16px",
+      fontWeight: "500",
+      position: "relative",
+    },
+    "@media (max-width: 768px)": {
+      display: "flex",
     },
   },
   applyNow: {
     backgroundColor: "#ff7f00",
     color: "#fff",
-    width:"10%",
-    padding: "8px", // Reduced padding for a normal size button
-    fontSize: "14px", // Adjusted font size for normal appearance
-    borderRadius: "4px", // Slightly rounded corners
+    width: "10%",
+    padding: "8px",
+    fontSize: "14px",
+    borderRadius: "4px",
     textDecoration: "none",
     fontWeight: "500",
-    alignSelf: "flex-end", // Ensures alignment to the top-right corner
-    marginLeft: "auto", // Pushes the button to the far right
+    alignSelf: "flex-end",
+    marginLeft: "auto",
     "&:hover": {
       backgroundColor: "#e66e00",
+    },
+    "@media (max-width: 768px)": {
+      width: "auto", // Adjust button size for mobile
+      padding: "6px 12px",
+    },
+  },
+  hamburger: {
+    display: "none",
+    flexDirection: "column",
+    gap: "5px",
+    cursor: "pointer",
+    "& div": {
+      width: "25px",
+      height: "3px",
+      backgroundColor: "#333",
+      borderRadius: "2px",
+    },
+    "@media (max-width: 768px)": {
+      display: "flex",
     },
   },
 });
@@ -71,7 +115,8 @@ function Header() {
   const classes = useStyles();
   const [isSticky, setIsSticky] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const location = useLocation(); // Get the current route location
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,7 +139,7 @@ function Header() {
           isSticky ? classes.sticky : ""
         }`}
       >
-        <div style={{ marginLeft:'5%',}}>
+        <div style={{ marginLeft: "5%" }}>
           <img src="/Logo.png" alt="WIT Logo" />
         </div>
         <nav className={classes.nav}>
@@ -129,9 +174,48 @@ function Header() {
         <button className={classes.applyNow} onClick={handleFormOpen}>
           Register
         </button>
+        <div
+          className={classes.hamburger}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </header>
 
-      {/* Google Form Embed */}
+      {isMenuOpen && (
+        <nav className={classes.mobileNav}>
+          <Link to="/" className={location.pathname === "/" ? "active" : ""}>
+            Home
+          </Link>
+          <Link
+            to="/about"
+            className={location.pathname === "/about" ? "active" : ""}
+          >
+            About
+          </Link>
+          <Link
+            to="/courses"
+            className={location.pathname === "/courses" ? "active" : ""}
+          >
+            Courses
+          </Link>
+          <Link
+            to="/Blogs"
+            className={location.pathname === "/Blogs" ? "active" : ""}
+          >
+            Blogs
+          </Link>
+          <Link
+            to="/contact"
+            className={location.pathname === "/contact" ? "active" : ""}
+          >
+            Contact
+          </Link>
+        </nav>
+      )}
+
       <GoogleFormEmbed showForm={showForm} onClose={handleFormClose} />
     </>
   );
