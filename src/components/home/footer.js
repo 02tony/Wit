@@ -3,30 +3,30 @@ import { Link } from "react-router-dom";
 import "./footer.css";
 
 const Footer = () => {
-  const renderStars = () => {
-    const stars = [];
-    for (let i = 0; i < 50; i++) {
-      const randomTop = Math.random() * 100;
-      const randomLeft = Math.random() * 100;
-      const randomDelay = Math.random() * 5 + "s";
-      const randomTailLength = Math.random() * 4 + 2;
+  // const renderStars = () => {
+  //   const stars = [];
+  //   for (let i = 0; i < 50; i++) {
+  //     const randomTop = Math.random() * 100;
+  //     const randomLeft = Math.random() * 100;
+  //     const randomDelay = Math.random() * 5 + "s";
+  //     const randomTailLength = Math.random() * 4 + 2;
 
-      stars.push(
-        <div
-          key={i}
-          className="star"
-          style={{
-            "--top-offset": `${randomTop}%`,
-            "--left-offset": `${randomLeft}%`,
-            "--fall-duration": "9s",
-            "--fall-delay": randomDelay,
-            "--star-tail-length": `${randomTailLength}em`,
-          }}
-        />
-      );
-    }
-    return stars;
-  };
+  //     stars.push(
+  //       <div
+  //         key={i}
+  //         className="star"
+  //         style={{
+  //           "--top-offset": `${randomTop}%`,
+  //           "--left-offset": `${randomLeft}%`,
+  //           "--fall-duration": "9s",
+  //           "--fall-delay": randomDelay,
+  //           "--star-tail-length": `${randomTailLength}em`,
+  //         }}
+  //       />
+  //     );
+  //   }
+  //   return stars;
+  // };
 
   return (
     <footer className="footer">
