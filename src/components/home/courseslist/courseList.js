@@ -16,6 +16,8 @@ const Carousel = () => {
   ];
 
   const handleCardClick = (course) => {
+    console.log("course",course);
+    
     setSelectedCourse(course);
   };
 
@@ -43,7 +45,7 @@ const Carousel = () => {
                     <p className="carousel-text">{course.title}</p>
                   </div>
                   <div className="back">
-                    <button className="animated-button ">
+                    <button  className="animated-button ">
                     <span>{course.subtext}</span>
                     <span></span>
                     </button>

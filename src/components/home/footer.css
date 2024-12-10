@@ -1,8 +1,8 @@
-/* Footer Base Styles */
+/* Base Styles */
 body {
-  margin: 0; /* Changed from -60 to 0 for proper layout */
-  /* display: flex; */
-  /* flex-direction: column; */
+  /* margin: 0; */
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
@@ -14,48 +14,59 @@ main {
 .footer {
   background: #0d1d31;
   color: #fff;
-  /* padding: 20px; */
-  padding: 40px 20px;
-  display: flex;
-  /* flex-direction: column; Stack items vertically */
-  align-items: center; /* Center items */
-  text-align: center;
-  width: 100%;
   position: relative;
   z-index: 1;
-  margin-top: auto;
+  padding: 40px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.footer-container {
-  display: flex; /* Enable flexbox for layout */
-  flex-wrap: wrap; /* Allow wrapping of sections */
-  justify-content: space-between;
-  /* max-width: 1200px; */
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   max-width: 1200px;
-  width: 100%; /* Full width for responsiveness */
+}
+
+.logo-container {
+  margin-bottom: auto;
+ 
+}
+
+.logo {
+  width: 150px;
   height: auto;
+}
+
+.organization-info {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-top: -25px;
+}
+
+.footer-sections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   gap: 20px;
+  width: 100%;
 }
 
 .footer-section {
-  flex: 1 1 calc(25% - 40px);
-  /* flex: 1 1 45%;  */
-  /* Allow sections to grow and shrink */
-  /* margin: 10px; Add margin for spacing */
-  margin: 10px 20px; /* Adjust margins for dynamic spacing */
-  min-width: 200px; /* Minimum width for smaller screens */
-}
-
-.footer-logo {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 15px;
+  flex: 1 1 calc(33% - 40px);
+  min-width: 200px;
+  text-align: left;
 }
 
 .footer-section h3 {
+  color: #f16e21;
   font-size: 18px;
   margin-bottom: 10px;
-  color: #f16e21;
 }
 
 .footer-section p,
@@ -74,70 +85,9 @@ main {
   margin-bottom: 10px;
 }
 
-.footer-section ul li::before {
-  content: "• ";
-  color: #f16e21;
-}
-
-.recent-post {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.recent-post img {
-  width: 50px;
-  height: 50px;
-  border-radius: 5px;
-  margin-right: 10px;
-}
-
-.recent-post div p {
-  font-size: 14px;
-  margin: 0 0 5px;
-}
-
-.recent-post div span {
+.recent-post span {
   font-size: 12px;
   color: #aaa;
-}
-
-/* Adjustments for mobile responsiveness */
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column; /* Stack sections vertically */
-    align-items: center; /* Center items */
-    padding: 10px; /* Ensure no overflow */
-  }
-
-  .footer-section {
-    text-align: center;
-    width: 100%; /* Full width for mobile */
-    margin-bottom: 20px; /* Spacing between sections */
-  }
-
-  .footer-logo {
-    margin-bottom: 10px;
-  }
-
-  .recent-post {
-    justify-content: center;
-  }
-
-  .footer-section h3 {
-    font-size: 16px;
-  }
-
-  .footer-section p, .footer-section ul {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .footer-section {
-    /* flex-direction: column; */
-    width: 100%; /* Full width for very small screens */
-  }
 }
 
 /* Stars Animation */
@@ -165,34 +115,6 @@ main {
   animation: fall var(--fall-duration, 9s) var(--fall-delay, 0s) linear infinite,
     tail-fade var(--fall-duration, 9s) var(--fall-delay, 0s) ease-out infinite;
 }
-
-@keyframes fall {
-  to {
-    transform: translate(-100vw, 90vh);
-  }
-}
-
-@keyframes tail-fade {
-  0%, 50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px; /* Space below the logo */
-}
-
-.logo {
-  width: 200px;
-  height: auto;
-}
-
 .wit-textW {
   font-size: 60px;
   font-family: 'Arial Black', sans-serif;
@@ -203,7 +125,6 @@ main {
   stroke-dashoffset: 300;
   animation: drawW 4s ease-in-out infinite, fillOrange 4s ease-in-out infinite;
 }
-
 .wit-textIT {
   font-size: 60px;
   font-family: 'Arial Black', sans-serif;
@@ -257,5 +178,32 @@ main {
   }
   100% {
     fill: #0c29e2;
+  }
+}
+
+@keyframes fall {
+  to {
+    transform: translate(-100vw, 90vh);
+  }
+}
+
+@keyframes tail-fade {
+  0%, 50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-sections {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    text-align: center;
   }
 }

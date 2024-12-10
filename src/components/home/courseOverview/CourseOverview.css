@@ -1,0 +1,112 @@
+/* General Container */
+.course-container {
+    display: flex;
+    flex-direction: column; /* Stack content by default (for mobile) */
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background */
+  }
+  
+  /* Left Section (Text Content) */
+  .course-left-section {
+    flex: 1;
+    background-color: #131536;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .course-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .course-breadcrumb {
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  
+  .course-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .course-stars {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  
+  /* Right Section (Video) */
+  .course-right-section {
+    flex: 1;
+    background-color: #5c5f8f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  /* Responsive Video */
+  .video-responsive {
+    width: 100%; /* Default full width */
+    max-width: 560px; /* Limit width for larger screens */
+    height: auto;
+    aspect-ratio: 16 / 9; /* Maintain aspect ratio */
+  }
+  
+  /* Responsive Design */
+  
+  /* For tablets and laptops (side-by-side layout) */
+  @media (min-width: 768px) {
+    .course-container {
+      flex-direction: row; /* Arrange sections side by side */
+      gap: 20px; /* Add space between sections */
+      height: auto; /* Adjust container height */
+    }
+  
+    .course-left-section {
+      padding: 30px;
+    }
+  
+    .course-title {
+      font-size: 2.5rem;
+    }
+  
+    .course-description {
+      font-size: 1rem;
+    }
+  
+    .video-responsive {
+      width: 90%; /* Slightly larger video */
+    }
+  }
+  
+  /* For desktops (larger screens) */
+  @media (min-width: 1024px) {
+    .course-container {
+      height: 70vh; /* Set a consistent height */
+    }
+  
+    .course-left-section {
+      padding: 40px;
+    }
+  
+    .course-title {
+      font-size: 3rem;
+    }
+  
+    .course-description {
+      font-size: 1.1rem;
+    }
+  
+    .video-responsive {
+      width: 80%; /* Adjust video size */
+    }
+  }
+  

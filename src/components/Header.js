@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
 import GoogleFormEmbed from "./Pages/GoogleForm/googleform";
+
 const useStyles = makeStyles({
   header: {
     display: "flex",
@@ -13,31 +14,22 @@ const useStyles = makeStyles({
     position: "sticky",
     top: 0,
     zIndex: 1000,
-    transition: "transform 0.3s ease-in-out, opacity 0.3s ease-in-out",
-    "& img": {
-      width: "auto",
-      height: "50px",
-      maxWidth: "100%",
-    },
   },
-  sticky: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100%",
-    zIndex: 1000,
-    transform: "translateY(0)",
+  logo: {
+    height: "50px",
+    "@media (max-width: 768px)": {
+      height: "40px",
+    },
   },
   nav: {
     display: "flex",
     gap: "25px",
-    marginLeft: "25%",
+    alignItems: "center",
     "& a": {
       color: "#333",
       textDecoration: "none",
       fontSize: "16px",
       fontWeight: "500",
-      position: "relative",
       transition: "color 0.3s ease",
       "&:hover": {
         color: "#ff7f00",
@@ -45,53 +37,33 @@ const useStyles = makeStyles({
       "&.active": {
         color: "#ff7f00",
         fontWeight: "bold",
-        borderBottom: "2px solid #ff7f00",
       },
     },
     "@media (max-width: 768px)": {
-      display: "none", // Hide navigation links on mobile
+      display: "none",
     },
   },
-  mobileNav: {
-    display: "none",
-    flexDirection: "column",
-    // position: "relatove",
-    top: "100%",
-    left: 0,
-    width: "100%",
+  dropdown: {
+    position: "absolute",
+    display: "flex",
+    top: "60px",
+    right: "10px",
     backgroundColor: "#fff",
-    boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
-    padding: "10px 5%",
-    zIndex: 999,
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    borderRadius: "8px",
+    display: "flex",
+    flexDirection: "column",
+    padding: "10px 0",
+    gap: "10px",
     "& a": {
-      // marginBottom: "0px",
       color: "#333",
       textDecoration: "none",
-      fontSize: "16px",
-      fontWeight: "500",
-      position: "relative",
-    },
-    "@media (max-width: 768px)": {
-      display: "flex",
-    },
-  },
-  applyNow: {
-    backgroundColor: "#ff7f00",
-    color: "#fff",
-    width: "10%",
-    padding: "8px",
-    fontSize: "14px",
-    borderRadius: "4px",
-    textDecoration: "none",
-    fontWeight: "500",
-    alignSelf: "flex-end",
-    marginLeft: "auto",
-    "&:hover": {
-      backgroundColor: "#e66e00",
-    },
-    "@media (max-width: 768px)": {
-      width: "auto", // Adjust button size for mobile
-      padding: "6px 12px",
+      padding: "10px 20px",
+      fontSize: "14px",
+      "&:hover": {
+        color: "#ff7f00",
+        backgroundColor: "#f9f9f9",
+      },
     },
   },
   hamburger: {
@@ -109,39 +81,41 @@ const useStyles = makeStyles({
       display: "flex",
     },
   },
+  applyNow: {
+    backgroundColor: "#ff7f00",
+    width:'auto',
+    color: "#fff",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer",
+    transition: "background-color 0.3s ease",
+    padding: "8px 12px",
+    fontSize: "14px",
+    "&:hover": {
+      backgroundColor: "#e66e00",
+    },
+    "@media (max-width: 768px)": {
+      fontSize: "12px",
+    },
+  },
 });
 
 function Header() {
-  const classes = useStyles();
-  const [isSticky, setIsSticky] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 100);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const classes = useStyles();
 
   const handleFormOpen = () => setShowForm(true);
   const handleFormClose = () => setShowForm(false);
 
+  const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
+  const handleLinkClick = () => setIsDropdownOpen(false);
+
   return (
     <>
-      <header
-        className={`${classes.header} ${
-          isSticky ? classes.sticky : ""
-        }`}
-      >
-        <div style={{ marginLeft: "5%" }}>
-          <img src="/Logo.png" alt="WIT Logo" />
-        </div>
+      <header className={classes.header}>
+        <img src="/Logo.png" alt="WIT Logo" className={classes.logo} />
         <nav className={classes.nav}>
           <Link to="/" className={location.pathname === "/" ? "active" : ""}>
             Home
@@ -159,8 +133,8 @@ function Header() {
             Courses
           </Link>
           <Link
-            to="/Blogs"
-            className={location.pathname === "/Blogs" ? "active" : ""}
+            to="/blogs"
+            className={location.pathname === "/blogs" ? "active" : ""}
           >
             Blogs
           </Link>
@@ -171,49 +145,34 @@ function Header() {
             Contact
           </Link>
         </nav>
-        <button className={classes.applyNow} onClick={handleFormOpen}>
-          Register
-        </button>
-        <div
-          className={classes.hamburger}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
+        <div className={classes.hamburger} onClick={toggleDropdown}>
           <div></div>
           <div></div>
           <div></div>
         </div>
+        <button className={classes.applyNow} onClick={handleFormOpen}>
+          Register
+        </button>
       </header>
 
-      {isMenuOpen && (
-        <nav className={classes.mobileNav}>
-          <Link to="/" className={location.pathname === "/" ? "active" : ""}>
+      {isDropdownOpen && (
+        <div className={classes.dropdown}>
+          <Link to="/" onClick={handleLinkClick}>
             Home
           </Link>
-          <Link
-            to="/about"
-            className={location.pathname === "/about" ? "active" : ""}
-          >
+          <Link to="/about" onClick={handleLinkClick}>
             About
           </Link>
-          <Link
-            to="/courses"
-            className={location.pathname === "/courses" ? "active" : ""}
-          >
+          <Link to="/courses" onClick={handleLinkClick}>
             Courses
           </Link>
-          <Link
-            to="/Blogs"
-            className={location.pathname === "/Blogs" ? "active" : ""}
-          >
+          <Link to="/blogs" onClick={handleLinkClick}>
             Blogs
           </Link>
-          <Link
-            to="/contact"
-            className={location.pathname === "/contact" ? "active" : ""}
-          >
+          <Link to="/contact" onClick={handleLinkClick}>
             Contact
           </Link>
-        </nav>
+        </div>
       )}
 
       <GoogleFormEmbed showForm={showForm} onClose={handleFormClose} />

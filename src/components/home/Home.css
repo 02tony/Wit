@@ -1,0 +1,39 @@
+/* Base styles */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 16px;
+  }
+  
+  .section {
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+  }
+  
+  /* Responsiveness */
+  @media (min-width: 768px) {
+    .content {
+      padding: 32px;
+    }
+  
+    .section {
+      margin-top: 5%;
+      padding: 32px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .section {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+  
