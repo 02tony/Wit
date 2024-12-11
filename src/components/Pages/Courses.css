@@ -5,8 +5,49 @@ body {
   padding: 0;
   background-color: #f8f9fa;
   width: 100%;
-  height: 100%;
+  height: auto;
 }
+.close-button {
+  position: absolute; /* Keep it relative to the modal */
+  top: 10px; /* Adjust the top margin */
+  right: 10px; /* Adjust the right margin */
+  background: none; /* No background */
+  border: none; /* No border */
+  font-size: 1.5rem; /* Default size */
+  color: #333; /* Visible color */
+  cursor: pointer; /* Pointer cursor on hover */
+  z-index: 10; /* Ensure it's on top of modal content */
+  padding: 5px; /* Add padding for better touch usability */
+  width: auto; /* Auto width for adaptability */
+  height: auto; /* Auto height for adaptability */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-button:hover {
+  color: #007bff; /* Hover effect for better UI feedback */
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .close-button {
+    font-size: 1.2rem; /* Smaller font size for smaller screens */
+    right: 10px; /* Adjust margin for smaller screens */
+    top: 8px; /* Adjust position */
+  }
+}
+
+/* Responsive adjustments for very small devices (e.g., phones) */
+@media (max-width: 480px) {
+  .close-button {
+    font-size: 1rem; /* Further reduce size for tiny screens */
+    padding: 4px; /* Smaller padding for compact design */
+    top: 5px;
+    right: 5px;
+  }
+}
+
 
 /* Container for the grid */
 .course-grid-container {
@@ -14,13 +55,11 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   overflow-y: auto;
- 
-  /* height: 200vh; Enable scrolling */
 }
 
 .course-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 20px;
   width: auto;
 }
@@ -34,6 +73,9 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
 }
 
 .course-card:hover {
@@ -43,13 +85,14 @@ body {
 
 .course-image {
   width: 100%;
-  height: 50%;
+  height: 200px;
   object-fit: cover;
 }
 
 .course-details {
   padding: 20px;
   text-align: center;
+  flex-grow: 1;
 }
 
 .course-details h3 {
@@ -78,6 +121,8 @@ body {
 .course-details ul li {
   font-size: 0.85rem;
   color: #555;
+  text-align: left;
+  margin-bottom: 5px;
 }
 
 /* Hover overlay for registration */
@@ -97,19 +142,233 @@ body {
 
 .course-card:hover .overlay {
   opacity: 1;
+
 }
 
 .register-button {
   background: #007bff;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 6px 14px;
   border-radius: 5px;
-  width: 30%;
   cursor: pointer;
   font-size: 1rem;
+  margin: 20px auto 0;
+  display: block;
+  /* transition: background 0.3s; */
+  width: '30%';
 }
 
 .register-button:hover {
   background: #0056b3;
+  padding: 6px 14px;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  display: block;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  max-width: 800px;
+  width: 80%;
+  box-sizing: border-box;
+  /* height: auto; */
+}
+
+.course-container {
+  flex-direction: column;
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  /* height: unset ; */
+}
+
+.course-header h1 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.course-header p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.course-stats {
+  margin-bottom: 20px;
+}
+
+.course-content {
+  flex-direction: column;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Responsive Design */
+@media (min-width: 769px) {
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-content {
+    padding: 20px;
+  }
+
+  .course-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .course-header p {
+    font-size: 0.9rem;
+  }
+
+  .register-button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .course-header h1 {
+    font-size: 1rem;
+  }
+
+  .course-header p {
+    font-size: 0.85rem;
+  }
+
+  .register-button {
+    font-size: 0.85rem;
+    padding: 6px 14px;
+  }
+}
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Modal content */
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  width: 100%;
+  max-height: 80%; /* Restricts the height of the modal */
+  overflow-y: auto; /* Enables scrolling when content overflows */
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.modal-content h1 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.modal-content ul li {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+/* Button */
+.register-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.register-button:hover {
+  background: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 15px;
+  }
+
+  .modal-content h1 {
+    font-size: 1.25rem;
+  }
+
+  .modal-content p {
+    font-size: 0.9rem;
+  }
+
+  .register-button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content h1 {
+    font-size: 1rem;
+  }
+
+  .modal-content p {
+    font-size: 0.85rem;
+  }
+
+  .register-button {
+    font-size: 0.85rem;
+    padding: 6px 14px;
+  }
 }

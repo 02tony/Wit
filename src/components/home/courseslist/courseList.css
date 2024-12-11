@@ -4,6 +4,8 @@
   text-align: center;
   padding: 20px;
   height: auto;
+  position: relative;
+  z-index: 1; /* Keep below the modal */
   background-color: #fff;
 }
 

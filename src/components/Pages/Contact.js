@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 import "./Contact.css";
 import Footer from "../home/footer";
 import Header from "../Header";
@@ -19,29 +20,42 @@ const Contact = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
+
     if (!formData.email || !formData.message) {
       alert("Please fill in all required fields.");
       return;
     }
 
-    // Use SMTP.js to send the email
-    window.Email.send({
-      Host: "smtp.elasticemail.com",
-      Username: "karthik",
-      Password: "Karthik@077", // Replace with a secure method for storing sensitive data
-      To: "karthik.xorstack@gmail.com",
-      From: formData.email,
-      Subject: `${formData.subject} - Message from ${formData.name || "Unknown User"}`,
-      Body: `
-        <strong>Name:</strong> ${formData.name} <br />
-        <strong>Email:</strong> ${formData.email} <br />
-        <strong>Phone:</strong> ${formData.phone} <br />
-        <strong>Subject:</strong> ${formData.subject} <br />
-        <strong>Message:</strong> ${formData.message}
-      `,
-    })
-      .then(() => alert("Email sent successfully!"))
-      .catch((error) => alert("Error sending email: " + error));
+    const templateParams = {
+      from_name: formData.name || "Unknown User",
+      from_email: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    emailjs
+      .send(
+        "service_35au3lg", // Replace with your EmailJS service ID
+        "template_pn431vp", // Replace with your EmailJS template ID
+        templateParams,
+        "R-cgmHVobxfdG09vg" // Replace with your EmailJS user ID
+      )
+      .then(
+        () => {
+          alert("Email sent successfully!");
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            subject: "Course Inquiry",
+            message: "",
+          });
+        },
+        (error) => {
+          alert("Error sending email: " + error.text);
+        }
+      );
   };
 
   return (

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import GoogleFormEmbed from "./GoogleForm/googleform";
 import "./Courses.css";
-
 const Modal = ({ isVisible, onClose, children }) => {
   if (!isVisible) return null;
 
@@ -17,16 +16,14 @@ const Modal = ({ isVisible, onClose, children }) => {
   );
 };
 
+
 const CourseDetails = ({ course, onClose }) => {
   const [showForm, setShowForm] = useState(false);
 
-  const handleFormOpen = () => {
-    setShowForm(true);
-  };
-
+  const handleFormOpen = () => setShowForm(true);
   const handleFormClose = () => {
     setShowForm(false);
-    onClose(); // Close modal when form is closed
+    onClose();
   };
 
   return (
@@ -35,18 +32,18 @@ const CourseDetails = ({ course, onClose }) => {
         <div className="course-container">
           <div className="course-header">
             <h1>{course.title}</h1>
-            <p className="course-description">{course.description}</p>
+            <p>{course.description}</p>
           </div>
           <div className="course-stats">
             <p>
               <strong>{course.totalStudents} Total Students</strong>
             </p>
             <p>
-              Rating: <span className="rating-stars">⭐⭐⭐⭐⭐</span> ({course.reviews} Reviews)
+              Rating: ⭐⭐⭐⭐⭐ ({course.reviews} Reviews)
             </p>
           </div>
           <div className="course-content">
-            <h2>What you’ll learn?</h2>
+            <h2>What you’ll learn:</h2>
             <ul>
               {course.topics.map((topic, index) => (
                 <li key={index}>{topic}</li>
@@ -54,24 +51,12 @@ const CourseDetails = ({ course, onClose }) => {
             </ul>
           </div>
           <div className="course-details">
-            <div>
-              <p>
-                Lectures: <span>{course.lectures}</span>
-              </p>
-              <p>
-                Quizzes: <span>{course.quizzes}</span>
-              </p>
-            </div>
-            <div>
-              <p>
-                Duration: <span>{course.duration}</span>
-              </p>
-              <p>
-                Assessments: <span>{course.assessments ? "Yes" : "No"}</span>
-              </p>
-            </div>
+            <p>Lectures: {course.lectures}</p>
+            <p>Quizzes: {course.quizzes}</p>
+            <p>Duration: {course.duration}</p>
+            <p>Assessments: {course.assessments ? "Yes" : "No"}</p>
           </div>
-          <button className="buy-button" onClick={handleFormOpen}>
+          <button className="register-button" onClick={handleFormOpen}>
             Register
           </button>
         </div>
@@ -80,6 +65,7 @@ const CourseDetails = ({ course, onClose }) => {
     </>
   );
 };
+
 
 export const PythonCourse = ({ onClose }) => (
   <CourseDetails

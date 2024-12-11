@@ -58,15 +58,16 @@ const Carousel = () => {
       </div>
 
       {selectedCourse && (
-        <div className="overlay">
-          <div className="overlay-content">
-            <button className="close-button" onClick={handleClose}>
-              ✖
-            </button>
-            <selectedCourse.component onClose={handleClose} />
-          </div>
-        </div>
-      )}
+  <div className="modal-overlay">
+    <div className="modal-content">
+      {/* <button className="close-button" onClick={handleClose}>
+        ✖
+      </button> */}
+      <selectedCourse.component onClose={handleClose} />
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
