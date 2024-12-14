@@ -1,7 +1,25 @@
-.App {
-  text-align: center;
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* App Container */
+.App {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Logo Animation */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -13,6 +31,16 @@
   }
 }
 
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Header Styles */
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -22,43 +50,101 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 20px;
 }
 
+/* Link Styling */
 .App-link {
   color: #61dafb;
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-link:hover {
+  text-decoration: underline;
 }
-/* App.css */
 
-/* Default styles (Light Mode) */
+/* Dark and Light Mode */
 body.light {
   background-color: white;
   color: black;
 }
 
-/* Dark Mode styles */
 body.dark {
   background-color: #121212;
   color: white;
 }
 
-/* Optional styling for buttons, headers, etc. */
+/* Section Styling */
+section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+/* Button Styles */
 button {
   padding: 10px 20px;
   margin: 10px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  background-color: #61dafb;
+  color: white;
+  font-size: 1rem;
+  transition: background-color 0.3s, opacity 0.3s;
 }
 
 button:hover {
+  background-color: #21a1f1;
   opacity: 0.9;
+}
+
+/* Footer */
+footer {
+  background-color: #282c34;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+
+/* Small Devices (Phones) */
+@media (max-width: 600px) {
+  .App-header {
+    font-size: calc(8px + 2vmin);
+    padding: 10px;
+  }
+
+  .App-logo {
+    height: 30vmin;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
+
+/* Medium Devices (Tablets) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .App-header {
+    font-size: calc(9px + 2vmin);
+    padding: 15px;
+  }
+
+  .App-logo {
+    height: 35vmin;
+  }
+}
+
+/* Large Devices (Desktops) */
+@media (min-width: 1024px) {
+  .App-header {
+    font-size: calc(12px + 2vmin);
+  }
+
+  .App-logo {
+    height: 40vmin;
+  }
 }

@@ -1,19 +1,14 @@
 /* styles.css */
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-
-/* header {
+/* Header */
+header {
     background: #35424a;
     color: #ffffff;
     padding: 10px 0;
     text-align: center;
-} */
+}
 
+/* Navigation */
 nav {
     margin: 10px 0;
 }
@@ -28,10 +23,12 @@ nav a:hover {
     text-decoration: underline;
 }
 
+/* Headings */
 h2 {
     color: #35424a;
 }
 
+/* Footer */
 footer {
     background: #35424a;
     color: #ffffff;
@@ -42,6 +39,7 @@ footer {
     width: 100%;
 }
 
+/* Forms */
 form {
     display: flex;
     flex-direction: column;
@@ -56,6 +54,8 @@ form label {
 form input {
     padding: 10px;
     margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 form button {
@@ -63,15 +63,16 @@ form button {
     background: #35424a;
     color: #ffffff;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
 }
 
 form button:hover {
     background: #2c3e50;
 }
+
 /* Light Theme (default) */
 .app.light {
     background-color: white;
     color: black;
 }
-

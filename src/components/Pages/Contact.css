@@ -132,13 +132,13 @@ select:focus {
 }
 
 button {
-  width: 100%;
-  padding: 12px;
+  width: 50%;
+  padding: 10px 7px;
   font-size: 16px;
   background-color: #ff5722;
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 28px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }

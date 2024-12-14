@@ -1,9 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../Header";
 import Footer from "../home/footer";
+
+import GoogleFormEmbed from "./GoogleForm/googleform";
 import "./Courses.css";
+const Modal = ({ isVisible, onClose, children }) => {
+  if (!isVisible) return null;
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <button className="close-button" onClick={onClose}>
+          ✖
+        </button>
+        {children}
+      </div>
+    </div>
+  );
+};
 
 const CourseList = () => {
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [showForm, setShowForm] = useState(false);
+
+  const handleRegisterClick = (course) => {
+    setSelectedCourse(course);
+    setShowForm(true);
+  };
+
+  const handleFormClose = () => {
+    setSelectedCourse(null);
+    setShowForm(false);
+  };
+
   const courses = [
     {
       title: "Python Programming",
@@ -77,13 +106,37 @@ const CourseList = () => {
                 </p>
               </div>
               <div className="overlay">
-                <button className="register-button">Register</button>
+                <button
+                  className="register-button"
+                  onClick={() => handleRegisterClick(course)}
+                >
+                  Register
+                </button>
               </div>
             </div>
           ))}
         </div>
       </main>
       <Footer />
+
+      {showForm && (
+        <Modal isVisible={showForm} onClose={handleFormClose}>
+          <div className="course-modal-content">
+            <h2>{selectedCourse.title}</h2>
+            <p>{selectedCourse.description}</p>
+            <p>
+              <strong>Duration:</strong> {selectedCourse.duration} |{" "}
+              <strong>Rating:</strong> {selectedCourse.rating}
+            </p>
+            <ul>
+              {selectedCourse.highlights.map((highlight, index) => (
+                <li key={index}>{highlight}</li>
+              ))}
+            </ul>
+            <GoogleFormEmbed showForm={showForm} onClose={handleFormClose} />
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import "./slider.css";
 
 const images = [
   "/sliderImages/two.jpg",
-  "/sliderImages/One.jpg",
+  // "/sliderImages/One.jpg",
   // "/sliderImages/one.jpeg",
   "/sliderImages/2.png",
   "/sliderImages/3.png",

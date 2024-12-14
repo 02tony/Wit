@@ -3,10 +3,8 @@
   width: 100%;
   text-align: center;
   padding: 20px;
-  height: auto;
-  position: relative;
-  z-index: 1; /* Keep below the modal */
   background-color: #fff;
+
 }
 
 .carousel-title {
@@ -17,7 +15,7 @@
 
 .carousel-underline {
   width: 100px;
-  margin: 10px auto;
+  margin: 10px auto ;
   border: 2px solid red;
 }
 
@@ -25,27 +23,39 @@
 .carousel {
   display: flex;
   justify-content: center;
-  overflow: hidden;
+  padding: 10px 10px;
 }
 
 .carousel-items {
   display: flex;
-  gap: 20px;
-  scroll-behavior: smooth;
+  gap: 40px;
+  /* scroll-behavior: smooth; */
+  overflow-x:scroll;
+  overflow-y: hidden;
 }
 
-/* Flip Card Styles */
+.carousel-items::-webkit-scrollbar {
+  height: 0px;
+  z-index: 1;
+}
+
+.carousel-items::-webkit-scrollbar-thumb {
+  background-color: #ff5722;
+  border-radius: 54px;
+
+}
+
 .card {
-  position: relative;
-  width: 350px;
-  height: 350px;
+  flex: 0 0 auto;
+  width: 300px; /* Default width for desktop */
+  height: 300px;
   background-color: #fff;
   perspective: 1000px;
-  /* border-radius: 10%; */
+  box-shadow: #333;
 }
 
+
 .content {
-  position: relative;
   width: 100%;
   height: 100%;
   
@@ -67,7 +77,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 30px;
+  border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -81,11 +91,12 @@
   transform: rotateY(180deg);
 }
 
-/* Flip Card Content */
 .carousel-image {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   margin-bottom: 10px;
+  border-radius: 20px;
+  box-shadow: #333;
 }
 
 .carousel-text {
@@ -93,130 +104,53 @@
   font-weight: bold;
   color: #333;
 }
+.carousel-item{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  /* overflow-x:scroll  */
+  /* scroll-behavior: smooth; */
 
-.carousel-subtext {
-  font-size: 1rem;
-  text-align: center;
-  color: #fff;
 }
 
-.carousel-button {
-  background-color: transparent;
-  border: 2px solid white;
-  font-size: 14px;
-  border-radius: 18px;
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.carousel-button:hover {
-  color: #ff5722; /* Orange */
-  border-color: #ff5722;
-  background-color: #f9f9f9;
-}
-
-/* Animated Button */
-.animated-button {
-  position: relative;
-  display: inline-block;
-  padding: 12px;
-  border: none;
-  font-size: 16px;
-  background-color: inherit;
-  border-radius: 10px;
-  font-weight: 600;
-  color: #f9f9f9;
-  box-shadow: 0 0 0 2px #f9f9f9;
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-}
-
-.animated-button span:last-child {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
-  background-color: #ff5722;
-  border-radius: 50%;
-  opacity: 0;
-  transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
-}
-
-.animated-button span:first-child {
-  position: relative;
-  z-index: 1;
-}
-
-.animated-button:hover {
-  color: #f9f9f9;
-  border-color: #ff5722;
-  background-color: #f9f9f9;
-}
-
-.animated-button:active {
-  scale: 0.95;
-}
-
-.animated-button:hover span:last-child {
-  width: 150px;
-  height: 150px;
-  opacity: 1;
-}
-
-/* Adjustments for mobile responsiveness */
+/* Responsive Design for Mobile */
 @media (max-width: 768px) {
-  .carousel-container {
-    padding: 15px;
-  }
-
-  .carousel-title {
-    font-size: 1.5rem;
-  }
-
   .carousel-items {
-    flex-direction: column;
     gap: 15px;
+    /* overflow-x: scroll;  */
   }
 
   .card {
-    width: 250px;
-    height: 250px;
-  }
-
-  .carousel-button {
-    font-size: 12px;
-  }
-
-  .animated-button {
-    padding: 10px 20px;
+    width: 80%; /* Adjust card width to fit mobile screens */
+    height: 200px;
   }
 }
 
-@media (max-width: 780px) {
-  .carousel-title {
-    font-size: 1.2rem;
-  }
-
+@media (max-width: 480px) {
   .carousel-items {
+    gap: 20px;
+    width: 85%;
+    height: 85%;
+    gap: 20px;
     flex-direction: column;
-    gap: 10px;
+    /* display: flex; */
+    display: grid;
+    border-color: #333;
+    /* scroll-behavior: smooth; */
+    /* overflow-x: auto; */
   }
 
   .card {
-    width: 780px;
+    width: 90%; /* Make cards almost full-width */
     height: 200px;
   }
 
-  .carousel-button {
-    font-size: 10px;
+  .carousel-text {
+    font-size: 1rem;
   }
 
-  .animated-button {
-    padding: 8px 16px;
+  .carousel-image {
+    width: 80px;
+    height: 80px;
   }
 }

@@ -1,7 +1,7 @@
 /* General Slider Styles */
 .slider {
   width: 100%; /* Full-width container */
-  height: calc(70vh); /* Default height for larger screens */
+  /* height: calc(70vh); Default height for larger screens */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +53,7 @@
 /* Responsive Styles for Tablets and Laptops */
 @media (max-width: 1024px) {
   .slider {
-    height: calc(60vh); /* Reduce slider height */
+    /* height: calc(60vh); Reduce slider height */
   }
 
   .slider-wrapper img {
@@ -68,7 +68,7 @@
 /* Responsive Styles for Mobile */
 @media (max-width: 768px) {
   .slider {
-    height: calc(50vh); /* Smaller slider height for mobile */
+    /* height: calc(50vh); Smaller slider height for mobile */
   }
 
   .slider-wrapper img {

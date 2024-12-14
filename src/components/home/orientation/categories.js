@@ -1,65 +1,7 @@
 import React, { useState } from "react";
+import { makeStyles } from "@mui/styles";
 
-const JobOrientedCourses = () => {
-  const [hoveredCard, setHoveredCard] = useState(null);
-
-  return (
-    <div style={styles.container}>
-      {/* Title Section */}
-      <h1 style={styles.title}>Job Oriented Courses</h1>
-      <hr style={styles.titleUnderline} />
-
-      {/* Slider Section */}
-      <div style={styles.slider}>
-        <div style={styles.imageContainerForTop}>
-          <img
-            src="svgs/jobHunt.svg"
-            alt="Development Job Guarantee"
-            style={styles.sliderImage}
-          />
-          <p style={styles.overlayText}>Find right career</p>
-        </div>
-        <div style={styles.imageContainerForTop}>
-          <img
-            src="svgs/interview.svg"
-            alt="Networking Job Guarantee"
-            style={styles.sliderImage}
-          />
-          <p style={styles.overlayText}>Networking Job Guarantee</p>
-        </div>
-      </div>
-
-      {/* Feature Cards Section */}
-      <div style={styles.cardsContainer}>
-        {[
-          { src: "svgs/Remote.svg", text: "Classroom Batch Training" },
-          { src: "svgs/OnlineClass.svg", text: "Online Training" },
-          { src: "svgs/CorporatesTraining.svg", text: "Job-Oriented Training" },
-          { src: "svgs/training.svg", text: "Corporate Training" },
-          { src: "/svgs/Certification-cuate.svg", text: "Certification Courses" },
-        ].map((card, index) => (
-          <div
-            key={index}
-            style={{
-              ...styles.card,
-              ...(hoveredCard === index ? styles.cardHoverEffect : {}),
-            }}
-            onMouseEnter={() => setHoveredCard(index)}
-            onMouseLeave={() => setHoveredCard(null)}
-          >
-            <div style={styles.imageContainer}>
-              <img src={card.src} alt={card.text} style={styles.cardImage} />
-              <p style={styles.overlayText}>{card.text}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-// Styles
-const styles = {
+const useStyles = makeStyles({
   container: {
     width: "100%",
     padding: "20px",
@@ -83,6 +25,11 @@ const styles = {
     gap: "20px",
     margin: "20px 0",
     marginBottom: "50px",
+    flexDirection: "row", // Default layout
+    "@media (max-width: 768px)": {
+      flexDirection: "column", // Mobile layout
+      flexWrap: "wrap",
+    },
   },
   imageContainerForTop: {
     position: "relative",
@@ -90,11 +37,19 @@ const styles = {
     height: "350px",
     borderRadius: 10,
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
+    "@media (max-width: 768px)": {
+      width: "90%",
+      height: "250px",
+    },
   },
   imageContainer: {
     position: "relative",
     width: "200px",
     height: "160px",
+    "@media (max-width: 768px)": {
+      width: "60%",
+      height: "60%",
+    },
   },
   sliderImage: {
     width: "100%",
@@ -112,15 +67,20 @@ const styles = {
     fontWeight: "bold",
     textAlign: "center",
     textShadow: "0 2px 2px rgba(255, 255, 255, 0.9)",
+    "@media (max-width: 768px)": {
+      fontSize: "0.9rem",
+    },
   },
   cardsContainer: {
     display: "flex",
     justifyContent: "space-evenly",
     alignItems: "center",
-    flexWrap: "wrap",
-    margin: "20px 0",
     gap: "20px",
     marginBottom: "50px",
+    "@media (max-width: 768px)": {
+      flexDirection: "column",
+      gap: "10px",
+    },
   },
   card: {
     width: "200px",
@@ -133,16 +93,79 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     padding: "10px",
-    transition: "transform 0.3s ease-in-out",
-  },
-  cardHoverEffect: {
-    transform: "scale(1.5)",
+    transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+    "&.hovered": {
+      transform: "scale(1.1)", // Slight zoom effect on hover
+      boxShadow: "0 8px 16px rgba(0, 0, 0, 0.6)", // Enhanced shadow effect
+    },
+    "@media (max-width: 768px)": {
+      width: "60%",
+      height: "60%",
+    },
   },
   cardImage: {
     width: "100%",
     height: "100%",
     borderRadius: "10px",
   },
+});
+
+const JobOrientedCourses = () => {
+  const classes = useStyles();
+  const [hoveredCard, setHoveredCard] = useState(null);
+
+  return (
+    <div className={classes.container}>
+      {/* Title Section */}
+      <h1 className={classes.title}>Job Oriented Courses</h1>
+      <hr className={classes.titleUnderline} />
+
+      {/* Slider Section */}
+      <div className={classes.slider}>
+        <div className={classes.imageContainerForTop}>
+          <img
+            src="svgs/jobHunt.svg"
+            alt="Development Job Guarantee"
+            className={classes.sliderImage}
+          />
+          <p className={classes.overlayText}>Find right career</p>
+        </div>
+        <div className={classes.imageContainerForTop}>
+          <img
+            src="svgs/interview.svg"
+            alt="Networking Job Guarantee"
+            className={classes.sliderImage}
+          />
+          <p className={classes.overlayText}>Networking Job Guarantee</p>
+        </div>
+      </div>
+
+      {/* Feature Cards Section */}
+      <div className={classes.cardsContainer}>
+        {[
+          { src: "svgs/Remote.svg", text: "Classroom Batch Training" },
+          { src: "svgs/OnlineClass.svg", text: "Online Training" },
+          { src: "svgs/CorporatesTraining.svg", text: "Job-Oriented Training" },
+          { src: "svgs/training.svg", text: "Corporate Training" },
+          { src: "/svgs/Certification-cuate.svg", text: "Certification Courses" },
+        ].map((card, index) => (
+          <div
+            key={index}
+            className={`${classes.card} ${hoveredCard === index ? "hovered" : ""}`}
+            onMouseEnter={() => setHoveredCard(index)}
+            onMouseLeave={() => setHoveredCard(null)}
+            onTouchStart={() => setHoveredCard(index)}
+            onTouchEnd={() => setHoveredCard(null)}
+          >
+            <div className={classes.imageContainer}>
+              <img src={card.src} alt={card.text} className={classes.cardImage} />
+              <p className={classes.overlayText}>{card.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default JobOrientedCourses;

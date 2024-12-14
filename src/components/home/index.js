@@ -20,12 +20,18 @@ import StudentBenefits from './testimonials/testimonials';
 export function Home() {
   return (
     <div>
+      <div  style={{position:'fixed',display: 'contents'}}>
       <Header />
+      </div>
       {/* <GoogleFormEmbed/> */}
+      <div style={{}}>
       <Slider />
+      </div>
+      <div>
       <CourseOverview />
+      </div>
       {/* <Banner /> */}
-      <scroll> 
+      {/* <scroll>  */}
         <div style={{marginTop:'10%'}}>
         <JobOrientedCourses/>
         </div>
@@ -42,7 +48,7 @@ export function Home() {
         <div style={{}}>
         <Footer />
         </div>
-      </scroll>
+      {/* </scroll> */}
     </div>
   );
 }
