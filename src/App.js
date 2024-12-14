@@ -6,7 +6,6 @@ import Contact from "./components/Pages/Contact";
 import CourseList from "./components/Pages/CourseList";
 import GoogleFormEmbed from "./components/Pages/GoogleForm/googleform";
 import { Blogs } from "./components/home/Blog";
-import Header from "./components/Header";
 import './App.css'; // Import the CSS file
 
 function App() {
@@ -49,7 +48,7 @@ function App() {
         {/* <Header /> */}
 
         {/* Progress Bar */}
-        {/* <div
+        <div
           style={{
             position: 'fixed',
             top: '70px', // Position below the header (adjust based on header height)
@@ -60,7 +59,7 @@ function App() {
             zIndex: 1002, // Ensure it's above other elements
             transition: 'width 0.2s ease-out',
           }}
-        ></div> */}
+        ></div>
 
         <Routes>
           <Route path="/" element={<Home />} />
