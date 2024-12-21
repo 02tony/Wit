@@ -6,8 +6,8 @@ const useStyles = makeStyles({
     width: "100%",
     padding: "20px",
     textAlign: "center",
-    backgroundColor: "white",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)",
+    backgroundColor: "#6ca6cc",
+    // boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)",
   },
   title: {
     fontSize: "2rem",
@@ -36,6 +36,7 @@ const useStyles = makeStyles({
     width: "450px",
     height: "350px",
     borderRadius: 10,
+    backgroundColor:'white',
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
     "@media (max-width: 768px)": {
       width: "90%",
@@ -73,7 +74,7 @@ const useStyles = makeStyles({
   },
   cardsContainer: {
     display: "flex",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
     alignItems: "center",
     gap: "20px",
     marginBottom: "50px",
@@ -128,6 +129,14 @@ const JobOrientedCourses = () => {
             alt="Development Job Guarantee"
             className={classes.sliderImage}
           />
+           {/* <iframe 
+          // src="https://lottie.host/embed/4449bc0f-4967-4092-8888-45007dc2e01e/TspOegoeQK.lottie" 
+          src="https://lottie.host/embed/517533c1-6c26-440d-a9c8-31ed2c9907d3/S6ZFqcLAXL.lottie"
+          style={{width: '300px'  ,height: '300px', }}>
+        </iframe> */}
+
+
+
           <p className={classes.overlayText}>Find right career</p>
         </div>
         <div className={classes.imageContainerForTop}>

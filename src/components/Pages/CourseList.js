@@ -82,7 +82,9 @@ const CourseList = () => {
 
   return (
     <div>
-      <Header />
+     <div  style={{position:'fixed',display: 'contents'}}>
+     <Header />
+     </div>
       <main className="course-grid-container">
         <div className="course-grid">
           {courses.map((course, index) => (

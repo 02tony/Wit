@@ -4,7 +4,8 @@
   margin: 0 auto;
   padding: 40px 20px;
   max-width: 1200px;
-  background: #f9f9f9;
+  
+background:wheat;
 }
 
 /* Contact Details Section */
@@ -73,6 +74,7 @@
   max-width: 600px;
   height: auto;
   border-radius: 10px;
+  background-color: #ffff;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -132,7 +134,7 @@ select:focus {
 }
 
 button {
-  width: 50%;
+  /* width: 50%; */
   padding: 10px 7px;
   font-size: 16px;
   background-color: #ff5722;

@@ -1,8 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import {React} from "react";
+import { NavLink } from "react-router-dom";
 import "./footer.css";
+// import { PythonCourse, WebDevelopmentCourse, SQLCourse,JavaCourse, AptitudeSkills, CommunicationSkills } from "../Pages/Courses";
 
 const Footer = () => {
+
   // const renderStars = () => {
   //   const stars = [];
   //   for (let i = 0; i < 50; i++) {
@@ -27,6 +29,16 @@ const Footer = () => {
   //   }
   //   return stars;
   // };
+  // const [activeCourse, setActiveCourse] = useState(null);
+
+  // const handleCourseClick = (course) => {
+  //   setActiveCourse(course);
+  // };
+
+  // const handleCloseModal = () => {
+  //   setActiveCourse(null);
+  // };
+
 
   return (
     <footer className="footer">
@@ -50,10 +62,11 @@ const Footer = () => {
         </div>
         <div className="organization-info">
           <p>
-            WIT is an online learning platform founded by IT industry professionals. We offer
+            {/* WIT is an online learning platform founded by IT industry professionals. We offer
             cutting-edge courses aligned with market standards, digital classrooms, live projects,
             certifications, and 24/7 support. Our mission is to ensure student success and secure
-            placements.Empowering careers with expert-led, flexible, and industry-aligned learning
+            placements.Empowering careers with expert-led, flexible, and industry-aligned learning */}
+            WIT stands at the forefront of digital education, revolutionizing the way professionals acquire in-demand IT skills. Founded by industry veterans, our platform delivers more than just courses – we provide a comprehensive learning ecosystem. Through cutting-edge curriculum aligned with current market needs, interactive digital classrooms, and hands-on live projects, students gain practical expertise that employers value. Our commitment extends beyond education with 24/7 support and industry-recognized certifications. What sets us apart is our unwavering focus on student success, ensuring each learner transitions smoothly from education to employment. At WIT, we're not just teaching technology; we're empowering careers through expert-led, flexible learning solutions.
           </p>
         </div>
         <div className="footer-sections">
@@ -66,29 +79,65 @@ const Footer = () => {
           </div>
           <div className="footer-section">
             <h3>COURSES</h3>
-            <ul>
-              <li>
-                <Link to="/courses">Courses</Link>
-              </li>
-              <li>Course Two</li>
-              <li>Single Course</li>
-              <li>Profile</li>
-              <li>Login/Register</li>
-            </ul>
+
+<ul>
+  <li>
+    <NavLink
+      to="/PythonCourse"
+      className={({ isActive }) => (isActive ? "active-link" : "")}
+    >
+      Python
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      to="/JavaCourse"
+      className={({ isActive }) => (isActive ? "active-link" : "")}
+    >
+      Java
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      to="/WebDevelopmentCourse"
+      className={({ isActive }) => (isActive ? "active-link" : "")}
+    >
+      Web Development
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      to="/CommunicationSkills"
+      className={({ isActive }) => (isActive ? "active-link" : "")}
+    >
+      Communication Skills
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      to="/AptitudeSkills"
+      className={({ isActive }) => (isActive ? "active-link" : "")}
+    >
+      Aptitude Skills
+    </NavLink>
+  </li>
+</ul>
+
           </div>
           <div className="footer-section">
-            <h3>RECENT POSTS</h3>
+            <h3>Up Coming Events</h3>
             <div className="recent-post">
-              <p>High School Program Starting Soon 2021</p>
-              <span>October 15, 2020</span>
+              <p>Up Coming Events </p>
+              <span>updating...</span>
             </div>
             <div className="recent-post">
-              <p>Shutdown of Schools Extended to Aug 31</p>
-              <span>April 25, 2020</span>
+              <p>Announcements</p>
+              <span>updating...</span>
             </div>
           </div>
         </div>
       </div>
+      {/* {activeCourse} */}
     </footer>
   );
 };

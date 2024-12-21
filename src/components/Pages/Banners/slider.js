@@ -2,12 +2,19 @@ import React, { useState, useEffect } from "react";
 import "./slider.css";
 
 const images = [
-  "/sliderImages/two.jpg",
+  // "/sliderImages/two.jpg",
+  // "/2.png",
+  "/Dark Blue Modern Programming Presentation/1.png",
+  "/Dark Blue Modern Programming Presentation/2.png",
+  "/Dark Blue Modern Programming Presentation/4.png",
+  "/Dark Blue Modern Programming Presentation/3.png",
+ 
   // "/sliderImages/One.jpg",
   // "/sliderImages/one.jpeg",
-  "/sliderImages/2.png",
-  "/sliderImages/3.png",
-  "/sliderImages/6.png",
+  // "/sliderImages/2.png",
+  // "/sliderImages/3.png",
+  // "/sliderImages/6.png",
+
 ];
 
 const Slider = () => {

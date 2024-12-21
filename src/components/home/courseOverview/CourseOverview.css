@@ -64,7 +64,7 @@
 /* For tablets and laptops (side-by-side layout) */
 @media (min-width: 418px) {
   .course-container {
-      flex-direction: row; /* Arrange sections side by side */
+      flex-direction: column; /* Arrange sections side by side */
       gap: 20px; /* Add space between sections */
       height: auto; /* Adjust container height */
   }

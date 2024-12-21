@@ -10,6 +10,16 @@ main {
   flex: 1;
   padding: 20px;
 }
+.footer ul li a {
+  color: #fff; /* Default color */
+  text-decoration: none;
+}
+
+.footer ul li a.active-link {
+  color: #fff; /* Active link color */
+  font-weight: bold;
+}
+
 
 .footer {
   background: #0d1d31;

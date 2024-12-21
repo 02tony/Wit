@@ -1,7 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
 import GoogleFormEmbed from "./Pages/GoogleForm/googleform";
+import { SQLCourse } from "./Pages/Courses";
+import { 
+  PythonCourse,
+  JavaCourse,
+  WebDevelopmentCourse,
+  // SQLCourse,
+  AptitudeSkills,
+  CommunicationSkills 
+} from "./Pages/Courses";
 
 const useStyles = makeStyles({
   header: {
@@ -13,6 +22,7 @@ const useStyles = makeStyles({
     borderBottom: "1px solid #ddd",
     position: "sticky",
     top: 0,
+    width: '100%',
     zIndex: 1000,
   },
   logo: {
@@ -43,18 +53,40 @@ const useStyles = makeStyles({
       display: "none",
     },
   },
-  dropdown: {
+  dropdownCourses: {
     position: "absolute",
-    display: "flex",
-    top: "60px",
-    right: "10px",
+    top: "70px",
+    right: "43%",
     backgroundColor: "#fff",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    borderRadius: "8px",
-    // display: "flex",
+    borderRadius: "4px",
+    flexDirection: "column",
+    padding: "9px 0",
+    gap: "10px",
+    display: "flex",
+    "& a": {
+      color: "#333",
+      textDecoration: "none",
+      padding: "10px 10px",
+      fontSize: "14px",
+      "&:hover": {
+        color: "#ff7f00",
+        backgroundColor: "#f9f9f9",
+      },
+    },
+  },
+  dropdownCourses1: {
+    position: "absolute",
+    top: "70px",
+    right: "48%",
+    backgroundColor: "#fff",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    borderRadius: "4px",
     flexDirection: "column",
     padding: "10px 0",
     gap: "10px",
+    display: "flex",
+    zIndex:1001,
     "& a": {
       color: "#333",
       textDecoration: "none",
@@ -65,6 +97,9 @@ const useStyles = makeStyles({
         backgroundColor: "#f9f9f9",
       },
     },
+  },
+  showDropdown: {
+    display: "flex",
   },
   hamburger: {
     display: "none",
@@ -81,9 +116,33 @@ const useStyles = makeStyles({
       display: "flex",
     },
   },
+  hamburgerMenu: {
+    position: "absolute",
+    top: "60px",
+    left: 0,
+    width: "100%",
+    backgroundColor: "#fff",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    zIndex: 1001,
+    display: "none",
+    flexDirection: "column",
+    padding: "10px 0",
+    "& a": {
+      color: "#333",
+      textDecoration: "none",
+      padding: "10px 20px",
+      fontSize: "14px",
+      "&:hover": {
+        color: "#ff7f00",
+        backgroundColor: "#f9f9f9",
+      },
+    },
+  },
+  showHamburgerMenu: {
+    display: "flex",
+  },
   applyNow: {
     backgroundColor: "#ff7f00",
-    width:'auto',
     color: "#fff",
     border: "none",
     borderRadius: "4px",
@@ -98,19 +157,72 @@ const useStyles = makeStyles({
       fontSize: "12px",
     },
   },
+  active: {
+    color: '#ff7f00',
+    fontWeight: 'bold',
+  },
+  button1: {
+    width: '50%',
+    padding: '10px 7px',
+    fontSize: '16px',
+    backgroundColor: '#ff5722',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '28px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
+  }
 });
 
 function Header() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownOpenCourses, setIsDropdownOpenCourses] = useState(false);
+  const [isHamburgerOpenMain,setIsDropdownOpenCoursesMain ] =useState(false)
+  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const location = useLocation();
   const classes = useStyles();
 
   const handleFormOpen = () => setShowForm(true);
   const handleFormClose = () => setShowForm(false);
+  
+  const toggleDropdownCourses = () => (setIsDropdownOpenCourses(prev => !prev) );
+  const toggleDropdownCoursesMain=() =>setIsDropdownOpenCoursesMain(prev => !prev)
+  const toggleHamburger = () => setIsHamburgerOpen(prev => !prev) ;
 
-  const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
-  const handleLinkClick = () => setIsDropdownOpen(false);
+  const handleLinkClick = () => {
+    setIsDropdownOpenCoursesMain(false)
+    setIsDropdownOpenCourses(false);
+  };
+ const openMainCourses =() =>{
+  toggleDropdownCourses()
+  toggleDropdownCoursesMain()
+  setIsHamburgerOpen(false);
+  }
+
+  useEffect(() => {
+    const updateProgress = () => {
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight =
+        document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener("scroll", updateProgress);
+    return () => {
+      window.removeEventListener("scroll", updateProgress);
+    };
+  }, []);
+
+  const courses = [
+    { title: "Python", path: "/PythonCourse", component: PythonCourse },
+    { title: "Java", path: "/JavaCourse", component: JavaCourse },
+    { title: "Web Development", path: "/WebDevelopmentCourse", component: WebDevelopmentCourse },
+    { title: "SQL", path: "/SQLCourse", component: SQLCourse },
+    { title: "Communication Skills", path: "/CommunicationSkills", component: CommunicationSkills },
+    { title: "Aptitude Skills", path: "/AptitudeSkills", component: AptitudeSkills },
+  ];
 
   return (
     <>
@@ -120,60 +232,97 @@ function Header() {
           <Link to="/" className={location.pathname === "/" ? "active" : ""}>
             Home
           </Link>
-          <Link
-            to="/about"
-            className={location.pathname === "/about" ? "active" : ""}
-          >
+          <Link to="/about" className={location.pathname === "/about" ? "active" : ""}>
             About
           </Link>
-          <Link
-            to="/courses"
-            className={location.pathname === "/courses" ? "active" : ""}
-          >
-            Courses
-          </Link>
-          <Link
-            to="/blogs"
-            className={location.pathname === "/blogs" ? "active" : ""}
-          >
+          <div onClick={toggleDropdownCourses} style={{ cursor: "pointer" }}>
+            <Link
+              className={`${classes.nav} ${
+                [
+                  "/PythonCourse",
+                  "/JavaCourse",
+                  "/WebDevelopmentCourse",
+                  "/SQLCourse",
+                  "/CommunicationSkills",
+                  "/AptitudeSkills",
+                ].some((path) => location.pathname.includes(path)) ? "active" : ""
+              }`}
+            >
+              Courses
+            </Link>
+            {isDropdownOpenCourses && (
+              <div className={`${classes.dropdownCourses} ${classes.showDropdown}`}>
+                {courses.map((course) => (
+                  <Link
+                    key={course.title}
+                    to={course.path}
+                    onClick={handleLinkClick}
+                    className={location.pathname === course.path ? "active" : ""}
+                  >
+                    {course.title}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+          <Link to="/blogs" className={location.pathname === "/blogs" ? "active" : ""}>
             Blogs
           </Link>
-          <Link
-            to="/contact"
-            className={location.pathname === "/contact" ? "active" : ""}
-          >
+          <Link to="/contact" className={location.pathname === "/contact" ? "active" : ""}>
             Contact
           </Link>
         </nav>
-        <div className={classes.hamburger} onClick={toggleDropdown}>
+        <div className={classes.hamburger} onClick={toggleHamburger}>
           <div></div>
           <div></div>
           <div></div>
         </div>
-        <button className={classes.applyNow} onClick={handleFormOpen}>
+        <div className={classes.applyNow}  onClick={handleFormOpen}>
           Register
-        </button>
+        </div>
+        <div>
+          <div
+            style={{
+              position: "absolute",
+              top: '70px',
+              left: 0,
+              height: "8px",
+              backgroundColor: "#e66e00",
+              width: `${scrollProgress}%`,
+              zIndex: 1002,
+              transition: "width 0.2s ease-out",
+            }}
+          ></div>
+        </div>
       </header>
 
-      {isDropdownOpen && (
-        <div className={classes.dropdown}>
-          <Link to="/" onClick={handleLinkClick}>
-            Home
-          </Link>
-          <Link to="/about" onClick={handleLinkClick}>
-            About
-          </Link>
-          <Link to="/courses" onClick={handleLinkClick}>
-            Courses
-          </Link>
-          <Link to="/blogs" onClick={handleLinkClick}>
-            Blogs
-          </Link>
-          <Link to="/contact" onClick={handleLinkClick}>
-            Contact
-          </Link>
+      {isHamburgerOpen && (
+        <div className={`${classes.hamburgerMenu} ${classes.showHamburgerMenu}`}>
+          <Link to="/" onClick={handleLinkClick}>Home</Link>
+          <Link to="/about" onClick={handleLinkClick}>About</Link>
+          <div>
+            <span onClick={openMainCourses} style={{ cursor: "pointer", padding: "10px 20px", display: "block",color:"#333", fontSize: "14px", }}>
+              Courses
+            </span>
+          </div>
+          <Link to="/blogs" onClick={handleLinkClick}>Blogs</Link>
+          <Link to="/contact" onClick={handleLinkClick}>Contact</Link>
+          
         </div>
       )}
+       {isHamburgerOpenMain && (
+              <div className={classes.dropdownCourses1}>
+                {courses.map((course) => (
+                  <Link
+                    key={course.title}
+                    to={course.path}
+                    onClick={handleLinkClick}
+                  >
+                  {course.title}
+                  </Link>
+                ))}
+              </div>
+            )}
 
       <GoogleFormEmbed showForm={showForm} onClose={handleFormClose} />
     </>

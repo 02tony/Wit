@@ -5,16 +5,14 @@
   }
   
   .blogs-main {
-    padding: 20px;
+    padding: 0px;
   }
   
   .blogs-hero {
     text-align: center;
-    margin: 20px 0;
+    /* margin: 20px 0; */
     /* background-color: #f5f5f5; */
     background: linear-gradient(to right, #0a8cc8, #04417f);
-    padding: 30px;
-    border-radius: 10px;
   }
   
   .blogs-title {
@@ -127,4 +125,73 @@
     padding: 20px;
     border-radius: 10px;
   }
-  
+  /* Header Section */
+header {
+  background: linear-gradient(to right, #0a8cc8, #04417f);
+  padding: 30px 20px;
+  text-align: center;
+  color: #fff;
+  border-radius: 10px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+header p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+header .cta-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #ff9800;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+header .cta-button:hover {
+  background-color: #e58900;
+}
+
+/* About Us Section */
+.blogs-about-us {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.blogs-about-us h2 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.blogs-about-us p {
+  flex: 1;
+  margin: 10px 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.blogs-about-us .icon-container {
+  flex: 0.3;
+  text-align: center;
+}
+
+.blogs-about-us .icon-container img {
+  width: 80px;
+  margin-bottom: 10px;
+}

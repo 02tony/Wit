@@ -4,7 +4,7 @@
   flex-direction: column; /* Stack columns on mobile */
   gap: 40px;
   padding: 20px 10px; /* Reduced padding for smaller screens */
-  background: #f7f7f7;
+  background: #e3cfb2;
 }
 
 /* Left Column */

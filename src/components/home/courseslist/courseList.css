@@ -2,16 +2,57 @@
 .carousel-container {
   width: 100%;
   text-align: center;
-  padding: 20px;
-  background-color: #fff;
+  padding: 20px 20px;
+  background-color: #fff
 
 }
 
 .carousel-title {
   font-size: 2rem;
   font-weight: bold;
-  color: #333;
+  color: #03101e;
 }
+/* Styling for Video */
+.carousel-video {
+  width: 100%;
+  height: 50%;
+  border-radius: 20px;
+  object-fit: cover; /* Ensures the video scales nicely */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); */
+}
+
+/* General Image and Video Styling */
+.carousel-image {
+  width: 100%;
+  height: 50%;
+  max-height: 200px; /* Maintain a consistent size */
+  border-radius: 20px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); */
+}
+
+/* Adjust Front Face Content */
+.front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .carousel-video,
+  .carousel-image {
+    max-height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-video,
+  .carousel-image {
+    max-height: 2500px;
+  }
+}
+
 
 .carousel-underline {
   width: 100px;
@@ -22,13 +63,36 @@
 /* Carousel Section */
 .carousel {
   display: flex;
+  background-color: #fff;
   justify-content: center;
   padding: 10px 10px;
+
 }
+.python-svg {
+  width: 100px;
+  height: 100px;
+  animation: rotate 4s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.close-button-1{
+  position: relative;
+  z-index: 1001;
+}
+
 
 .carousel-items {
   display: flex;
   gap: 40px;
+  background-color: #fff;
+  box-shadow: #333;
   /* scroll-behavior: smooth; */
   overflow-x:scroll;
   overflow-y: hidden;
@@ -40,18 +104,20 @@
 }
 
 .carousel-items::-webkit-scrollbar-thumb {
-  background-color: #ff5722;
+  background-color: #fff;
   border-radius: 54px;
 
 }
 
 .card {
   flex: 0 0 auto;
-  width: 300px; /* Default width for desktop */
-  height: 300px;
-  background-color: #fff;
+  width: 30vh; /* Default width for desktop */
+  height: 30vh;
+  background-color: hsl(34, 63%, 67%);
   perspective: 1000px;
-  box-shadow: #333;
+  /* box-shadow: #333; */
+  box-Shadow: "0 4px 8px rgba(0, 0, 0, 0.5)";
+  border-radius: 24px;
 }
 
 
@@ -78,7 +144,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
 }
 
 .front {
@@ -91,13 +157,6 @@
   transform: rotateY(180deg);
 }
 
-.carousel-image {
-  width: 100%;
-  height: 100%;
-  margin-bottom: 10px;
-  border-radius: 20px;
-  box-shadow: #333;
-}
 
 .carousel-text {
   font-size: 1.2rem;
@@ -108,8 +167,9 @@
   display: flex;
   flex-wrap: nowrap;
   gap: 20px;
-  /* overflow-x:scroll  */
-  /* scroll-behavior: smooth; */
+
+  height: 310px;
+
 
 }
 
@@ -121,8 +181,8 @@
   }
 
   .card {
-    width: 80%; /* Adjust card width to fit mobile screens */
-    height: 200px;
+    width: 40vh; /* Adjust card width to fit mobile screens */
+    height: 40vh;
   }
 }
 
@@ -141,8 +201,8 @@
   }
 
   .card {
-    width: 90%; /* Make cards almost full-width */
-    height: 200px;
+    width: 40vh; /* Make cards almost full-width */
+    height: 30vh;
   }
 
   .carousel-text {

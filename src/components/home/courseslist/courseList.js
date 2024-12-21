@@ -1,60 +1,71 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./courseList.css";
 import {
   PythonCourse,
   JavaCourse,
   WebDevelopmentCourse,
-  FullStackCourse,
-  TestingCourse,
+  SQLCourse,
+  AptitudeSkills,
+  CommunicationSkills,
 } from "../../Pages/Courses";
 
 const Carousel = () => {
-  const [selectedCourse, setSelectedCourse] = useState(null);
+  const navigate = useNavigate();
 
   const courses = [
     {
       title: "Python",
       subtext: "Read More",
-      img: "/CourseImages/pythonfimg.webp",
-      path: "/course/python",
+      // img: "/CourseImages/pythonfimg.webp",
+      path: "/PythonCourse",
+      video: "/CourseImages/PythonFlipper.mp4",
       component: PythonCourse,
     },
     {
       title: "Java",
       subtext: "Read More",
-      img: "/CourseImages/javaimg.png",
-      path: "/course/java",
+      // img: "/CourseImages/javaimg.png",
+      video:'/CourseImages/JavaVideo.mp4',
+      path: "/JavaCourse",
       component: JavaCourse,
     },
     {
       title: "Web Development",
       subtext: "Read More",
-      img: "/CourseImages/webdevelopment.jpg",
-      path: "/course/webdev",
+      // img: "/CourseImages/webdevelopment.jpg",
+      video:'/CourseImages/webDev.mp4',
+      path: "/WebDevelopmentCourse",
       component: WebDevelopmentCourse,
     },
     {
-      title: "Testing",
+      title: "SQL",
       subtext: "Read More",
-      img: "/CourseImages/Testing.jpeg",
-      path: "/course/testing",
-      component: TestingCourse,
+      // img: "/CourseImages/webdevelopment.jpg",
+      video:'/CourseImages/SQL.mp4',
+      path: "/SQLCourse",
+      component: SQLCourse,
     },
     {
-      title: "Full Stack",
+      title: "Aptitude Skills",
       subtext: "Read More",
-      img: "/CourseImages/FullStack.png",
-      path: "/course/fullstack",
-      component: FullStackCourse,
+      // img: "/CourseImages/webdevelopment.jpg",
+      video:'/CourseImages/Apti.mp4',
+      path: "/AptitudeSkills",
+      component: AptitudeSkills,
     },
+    {
+      title: "Communication Skills",
+      subtext: "Read More",
+      img: "/CourseImages/communication.svg",
+      path: "/CommunicationSkills",
+      component: CommunicationSkills,
+    },
+
   ];
 
-  const handleCardClick = (course) => {
-    setSelectedCourse(course);
-  };
-
-  const handleClose = () => {
-    setSelectedCourse(null);
+  const handleCardClick = (path) => {
+    navigate(path); // Navigate to the course path
   };
 
   return (
@@ -65,14 +76,28 @@ const Carousel = () => {
         <div className="carousel-items">
           {courses.map((course, index) => (
             <div className="carousel-item" key={index}>
-              <div className="card" onClick={() => handleCardClick(course)}>
+              <div className="card" onClick={() => handleCardClick(course.path)}>
                 <div className="content">
                   <div className="front">
-                    <img
-                      src={course.img}
-                      alt={course.title}
-                      className="carousel-image"
-                    />
+                  {course.video ? (
+                      <video
+                        className="carousel-video"
+                        // controls
+                        // muted
+                        loop
+                        autoPlay
+                        poster={course.img}
+                      >
+                        <source src={course.video} type="video/mp4"  />
+                        Your browser does not support the video tag.
+                      </video>
+                     ) : (
+                      <img
+                        src={course.img}
+                        alt={course.title}
+                        className="carousel-image"
+                      />
+                    )} 
                     <p className="carousel-text">{course.title}</p>
                   </div>
                   <div className="back">
@@ -87,17 +112,6 @@ const Carousel = () => {
           ))}
         </div>
       </div>
-
-      {selectedCourse && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <button className="close-button" onClick={handleClose}>
-              ✖
-            </button>
-            <selectedCourse.component onClose={handleClose} />
-          </div>
-        </div>
-      )}
     </div>
   );
 };

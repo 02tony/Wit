@@ -5,8 +5,12 @@ import './About.css'; // Importing the updated CSS file for styling
 
 const About = () => {
   return (
-    <div className="about-container">
-      <Header />
+    <div>
+       <div  style={{position:'fixed',display: 'contents'}}>
+     <Header />
+     </div>
+     <div className="about-container">
+    
       {/* Hero Section */}
       <div className="about-hero">
         <h1>About Us</h1>
@@ -118,6 +122,8 @@ const About = () => {
 
       <Footer />
     </div>
+    </div>
+    
   );
 };
 
