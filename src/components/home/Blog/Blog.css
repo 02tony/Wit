@@ -131,7 +131,7 @@ header {
   padding: 30px 20px;
   text-align: center;
   color: #fff;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 header h1 {

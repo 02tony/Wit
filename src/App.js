@@ -9,7 +9,7 @@ import { Blogs } from "./components/home/Blog";
 import { PythonCourse, WebDevelopmentCourse , JavaCourse, AptitudeSkills, CommunicationSkills, SQLCourse} from "./components/Pages/Courses";
 import './App.css'; // Import the CSS file
 import ScrollToTopButton from "./components/Pages/ScrollToTopButton";
-
+import ScrollToTop from "./components/Pages/ScrollTop";
 function App() {
   const [theme, setTheme] = useState('light'); // Default theme
   
@@ -31,6 +31,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop/>
       <div>
         <Routes>
           <Route path="/" element={<Home />} />

@@ -1,39 +1,51 @@
 import React, { useState, useEffect } from "react";
+import { useSwipeable } from "react-swipeable";
 import "./slider.css";
 
 const images = [
-  // "/sliderImages/two.jpg",
-  // "/2.png",
   "/Dark Blue Modern Programming Presentation/1.png",
   "/Dark Blue Modern Programming Presentation/2.png",
   "/Dark Blue Modern Programming Presentation/4.png",
   "/Dark Blue Modern Programming Presentation/3.png",
- 
-  // "/sliderImages/One.jpg",
-  // "/sliderImages/one.jpeg",
-  // "/sliderImages/2.png",
-  // "/sliderImages/3.png",
-  // "/sliderImages/6.png",
-
 ];
 
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoSliding, setIsAutoSliding] = useState(true);
 
   useEffect(() => {
+    if (!isAutoSliding) return;
+
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
+    }, 4000); // Auto-slide every 4 seconds
 
     return () => clearInterval(timer);
-  }, []);
+  }, [isAutoSliding]);
 
   const handleDotClick = (index) => {
     setCurrentIndex(index);
+    setIsAutoSliding(false); // Disable auto-slider
+  };
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => handleSwipe("left"),
+    onSwipedRight: () => handleSwipe("right"),
+  });
+
+  const handleSwipe = (direction) => {
+    setIsAutoSliding(false); // Disable auto-slider on swipe
+    if (direction === "left") {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    } else if (direction === "right") {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      );
+    }
   };
 
   return (
-    <div className="slider">
+    <div className="slider" {...swipeHandlers}>
       <div
         className="slider-wrapper"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -54,8 +66,5 @@ const Slider = () => {
     </div>
   );
 };
-
-
-
 
 export default Slider;

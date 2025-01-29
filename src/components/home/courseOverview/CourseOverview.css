@@ -62,7 +62,7 @@
 /* Responsive Design */
 
 /* For tablets and laptops (side-by-side layout) */
-@media (min-width: 418px) {
+@media (min-width: 400px) {
   .course-container {
       flex-direction: column; /* Arrange sections side by side */
       gap: 20px; /* Add space between sections */
@@ -85,7 +85,30 @@
       width: 90%; /* Slightly larger video */
   }
 }
+@media (min-width: 300x) {
+  .course-container {
+      flex-direction: column; /* Arrange sections side by side */
+      gap: 20px; /* Add space between sections */
+      height: auto; /* Adjust container height */
+      display: none;
+  }
 
+  .course-left-section {
+      padding: 30px;
+  }
+
+  .course-title {
+      font-size: 2.5rem;
+  }
+
+  .course-description {
+      font-size: 1rem;
+  }
+
+  .video-responsive {
+      width: 90%; /* Slightly larger video */
+  }
+}
 /* For desktops (larger screens) */
 @media (min-width: 1024px) {
   .course-container {

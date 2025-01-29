@@ -70,7 +70,7 @@ main {
 .footer-section {
   flex: 1 1 calc(33% - 40px);
   min-width: 200px;
-  text-align: left;
+  /* text-align: left; */
 }
 
 .footer-section h3 {

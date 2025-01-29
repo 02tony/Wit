@@ -70,13 +70,13 @@ const Footer = () => {
           </p>
         </div>
         <div className="footer-sections">
-          <div className="footer-section">
+          {/* <div className="footer-section">
             <h3>ADDRESS</h3>
             <p>374 William S Canning Blvd, River</p>
             <p>MA 2721, USA</p>
             <p>Phone: (+880) 155-69569</p>
             <p>Email: support@wit.com</p>
-          </div>
+          </div> */}
           <div className="footer-section">
             <h3>COURSES</h3>
 

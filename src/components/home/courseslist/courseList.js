@@ -12,61 +12,56 @@ import {
 
 const Carousel = () => {
   const navigate = useNavigate();
+const courses = [
+  {
+    title: "Python",
+    subtext: "Read More",
+    video: process.env.PUBLIC_URL + "/CourseImages/PythonFlipper.mp4",
+    path: "/PythonCourse",
+    component: PythonCourse,
+  },
+  {
+    title: "Java",
+    subtext: "Read More",
+    video: process.env.PUBLIC_URL + "/CourseImages/JavaVideo.mp4",
+    path: "/JavaCourse",
+    component: JavaCourse,
+  },
+  {
+    title: "Web Development",
+    subtext: "Read More",
+    video: process.env.PUBLIC_URL + "/CourseImages/webDev.mp4",
+    path: "/WebDevelopmentCourse",
+    component: WebDevelopmentCourse,
+  },
+  {
+    title: "SQL",
+    subtext: "Read More",
+    video: process.env.PUBLIC_URL + "/CourseImages/SQL.mp4",
+    path: "/SQLCourse",
+    component: SQLCourse,
+  },
+  {
+    title: "Aptitude Skills",
+    subtext: "Read More",
+    video: process.env.PUBLIC_URL + "/CourseImages/Apti.mp4",
+    path: "/AptitudeSkills",
+    component: AptitudeSkills,
+  },
+  {
+    title: "Communication Skills",
+    subtext: "Read More",
+    img: process.env.PUBLIC_URL + "/CourseImages/communication.svg",
+    path: "/CommunicationSkills",
+    component: CommunicationSkills,
+  },
+];
 
-  const courses = [
-    {
-      title: "Python",
-      subtext: "Read More",
-      // img: "/CourseImages/pythonfimg.webp",
-      path: "/PythonCourse",
-      video: "/CourseImages/PythonFlipper.mp4",
-      component: PythonCourse,
-    },
-    {
-      title: "Java",
-      subtext: "Read More",
-      // img: "/CourseImages/javaimg.png",
-      video:'/CourseImages/JavaVideo.mp4',
-      path: "/JavaCourse",
-      component: JavaCourse,
-    },
-    {
-      title: "Web Development",
-      subtext: "Read More",
-      // img: "/CourseImages/webdevelopment.jpg",
-      video:'/CourseImages/webDev.mp4',
-      path: "/WebDevelopmentCourse",
-      component: WebDevelopmentCourse,
-    },
-    {
-      title: "SQL",
-      subtext: "Read More",
-      // img: "/CourseImages/webdevelopment.jpg",
-      video:'/CourseImages/SQL.mp4',
-      path: "/SQLCourse",
-      component: SQLCourse,
-    },
-    {
-      title: "Aptitude Skills",
-      subtext: "Read More",
-      // img: "/CourseImages/webdevelopment.jpg",
-      video:'/CourseImages/Apti.mp4',
-      path: "/AptitudeSkills",
-      component: AptitudeSkills,
-    },
-    {
-      title: "Communication Skills",
-      subtext: "Read More",
-      img: "/CourseImages/communication.svg",
-      path: "/CommunicationSkills",
-      component: CommunicationSkills,
-    },
-
-  ];
 
   const handleCardClick = (path) => {
     navigate(path); // Navigate to the course path
   };
+
 
   return (
     <div className="carousel-container">
@@ -79,25 +74,34 @@ const Carousel = () => {
               <div className="card" onClick={() => handleCardClick(course.path)}>
                 <div className="content">
                   <div className="front">
-                  {course.video ? (
-                      <video
-                        className="carousel-video"
-                        // controls
-                        // muted
-                        loop
-                        autoPlay
-                        poster={course.img}
-                      >
-                        <source src={course.video} type="video/mp4"  />
-                        Your browser does not support the video tag.
-                      </video>
-                     ) : (
-                      <img
-                        src={course.img}
-                        alt={course.title}
-                        className="carousel-image"
-                      />
-                    )} 
+                    {console.log("courses",courses)
+                    }
+                  { 
+                  // isLoaded 
+                  // ? 
+                  (
+                    <video
+                    key={course.video} // Force reloading when re-rendering
+                    className="carousel-video"
+                    loop
+                    autoPlay
+                    muted
+                    preload="auto"
+                    poster={course.img}
+                  >
+                    <source src={course.video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+
+                     ) 
+                    //  : (
+                    //   <img
+                    //     src={course.img}
+                    //     alt={course.title}
+                    //     className="carousel-image"
+                    //   />
+                    // )
+                    } 
                     <p className="carousel-text">{course.title}</p>
                   </div>
                   <div className="back">

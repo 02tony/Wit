@@ -116,9 +116,11 @@
 .why-choose-us {
   text-align: center;
   background: linear-gradient(135deg, #0a8cc8, #04417f);
-  padding: 20px;
+  padding: 50px;
   color: #fff;
   border-radius: 10px;
+  margin-top: 5%;
+  
 }
 
 .why-choose-us h2 {
@@ -128,15 +130,17 @@
 }
 
 .benefits-list {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
+  /* list-style: none; */
+  /* padding: 0; */
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* justify-content: center; */
+  /* gap: 10px; */
+  /* flex-direction: column; */
 
-.benefits-list li {
+}
+/* 
+.benefits-list  {
   background: #fff;
   color: #04417f;
   padding: 10px;
@@ -144,7 +148,7 @@
   width: 90%;
   text-align: left;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+} */
 
 @media (min-width: 768px) {
   .benefits-list li {
@@ -165,7 +169,10 @@
 
 .benefit-text {
   font-size: 0.9rem;
-  color: #04417f;
+  color: #fff;
+  justify-content: center;
+  /* align-self: center; */
+
 }
 
 .benefits-list li:hover {

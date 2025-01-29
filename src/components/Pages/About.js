@@ -74,48 +74,46 @@ const About = () => {
         {/* Why Choose Us Section */}
         <div className="why-choose-us">
           <h2>Why Choose Us?</h2>
-          <ul className="benefits-list">
-            <li>
-              <div className="benefit-icon">
+          <ol  style={{alignContent:'center',margin:10}}>
+          <div>
+          <li>
+              {/* <div className="benefit-icon">
                 <img src="/icons/market-content.svg" alt="Market Content" />
-              </div>
-              <div className="benefit-text">
-                Market-aligned courses with cutting-edge content
-              </div>
+              </div> */}
+              {/* <div className="benefit-text"> */}
+              After graduation, you won’t need to search for external IT institutes or spend money on additional training and staying. 
+              
+              {/* </div> */}
             </li>
             <li>
-              <div className="benefit-icon">
+              {/* <div className="benefit-icon">
                 <img src="/icons/digital-classroom.svg" alt="Digital Classroom" />
-              </div>
-              <div className="benefit-text">
-                Interactive and engaging digital classrooms
-              </div>
+              </div> */}
+              {/* <div className="benefit-text"> */}
+              Our programs are designed to prepare you for immediate entry into the workforce. 
+             
+              {/* </div> */}
             </li>
             <li>
-              <div className="benefit-icon">
+              {/* <div className="benefit-icon">
                 <img src="/icons/real-world-projects.svg" alt="Projects" />
-              </div>
-              <div className="benefit-text">
-                Hands-on experience with real-world projects
-              </div>
+              </div> */}
+              {/* <div className="benefit-text"> */}
+              WIT is dedicated to awakening students to their full potential, ensuring they are ready for a successful future in the tech industry.
+              
+              {/* </div> */}
             </li>
             <li>
-              <div className="benefit-icon">
+              {/* <div className="benefit-icon">
                 <img src="/icons/certifications.svg" alt="Certifications" />
-              </div>
-              <div className="benefit-text">
-                Certifications to validate your skills
-              </div>
+              </div> */}
+              {/* <div className="benefit-text"> */}
+              WIT offers the best courses in the industry at an affordable price, providing exceptional training compared to other institutes.
+              {/* </div> */}
             </li>
-            <li>
-              <div className="benefit-icon">
-                <img src="/icons/mentor-support.svg" alt="Support" />
-              </div>
-              <div className="benefit-text">
-                24/7 mentor support and flexible schedules
-              </div>
-            </li>
-          </ul>
+          </div>
+           
+          </ol>
         </div>
 
       </div>
