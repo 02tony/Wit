@@ -1,5 +1,8 @@
 ---
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home3/waytoiti/public_html
-    - /bin/cp -r * $DEPLOYPATH
+  deployment:
+    tasks:
+      - export REPOPATH=/home3/waytoiti/repositories/Wit
+      - export DEPLOYPATH=/home3/waytoiti/public_html
+      - rm -rf $DEPLOYPATH/*  # Clears old files to avoid conflicts
+      - cp -r $REPOPATH/public/* $DEPLOYPATH/  # Copies only the needed files
+  
