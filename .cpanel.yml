@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/waytoiti/public_html
+    - export DEPLOYPATH=/home3/waytoiti/public_html
     - /bin/cp -r * $DEPLOYPATH
