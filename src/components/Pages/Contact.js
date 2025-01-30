@@ -67,17 +67,17 @@ const Contact = () => {
           <div className="contact-item">
             <div className="icon">📍</div>
             <h3>Address</h3>
-            <p>228-5 Main Street, Georgia, USA</p>
+            <p>Bengaluru</p>
           </div>
           <div className="contact-item">
             <div className="icon">✉️</div>
             <h3>Email Address</h3>
-            <p>contact@educavo.com</p>
+            <p>info@waytoit.in</p>
           </div>
           <div className="contact-item">
             <div className="icon">📞</div>
             <h3>Phone Number</h3>
-            <p>(+01)999-999-4444</p>
+            <p>(+91) 9492328013</p>
           </div>
         </div>
 

@@ -85,12 +85,11 @@
       width: 90%; /* Slightly larger video */
   }
 }
-@media (min-width: 300x) {
+@media (min-width: 300px) {
   .course-container {
       flex-direction: column; /* Arrange sections side by side */
       gap: 20px; /* Add space between sections */
       height: auto; /* Adjust container height */
-      display: none;
   }
 
   .course-left-section {
